@@ -12,5 +12,3 @@ date: 2025-11-14
 [System Design karanpratapsingh](https://www.karanpratapsingh.com/courses/system-design) 
 
 [System Design For Beginners: Everything You Need in One Article Shivam Bhadani](https://medium.com/@shivambhadani_/system-design-for-beginners-everything-you-need-in-one-article-c74eb702540b)
-
-sdafdas

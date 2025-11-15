@@ -26,7 +26,7 @@ export default ((userOpts?: Partial<Options>) => {
             <i>Learning notes about DSA</i>
           </li>          
           <li>
-            <h3 style={{marginTop: 0, marginBottom: 0}}><a href="/notes/sd">System Design</a></h3>
+            <h3 style={{marginTop: 0, marginBottom: 0}}><a href="/notes/system-design">System Design</a></h3>
             <i>Learning notes about system design</i>
           </li>          
           <li>
@@ -34,7 +34,7 @@ export default ((userOpts?: Partial<Options>) => {
             <i>Learning notes about AI and ML</i>
           </li>
           <li>
-            <h3 style={{marginTop: 0, marginBottom: 0}}><a href="/notes/ai-ml">Cheatsheets</a></h3>
+            <h3 style={{marginTop: 0, marginBottom: 0}}><a href="/notes/cheatsheets">Cheatsheets</a></h3>
             <i>Learning notes about cheatsheets</i>
           </li>
           <li>
