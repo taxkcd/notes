@@ -13,6 +13,14 @@ date: 2025-11-14
 
 
 
+#### 2. [Validate BST](https://leetcode.com/problems/validate-binary-search-tree/description/)
+
+- [claude](https://claude.ai/share/be78ac58-9236-4b40-be5c-50aba2a275f5) 
+- [chatgpt](https://chatgpt.com/share/6919c7c3-ebd8-8005-aa22-897071f906fb) 
+
+
+
+
 ## ii. Array Manipulation
 
 #### 1. [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) And [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/) 

@@ -59,6 +59,16 @@ date: 2025-11-13
 - see chat if don't remember. otherwise draw on paper. really simple
 ```
 
+#### 2. [Validate BST](https://leetcode.com/problems/validate-binary-search-tree/description/)
+
+``` bash
+- min max range and it is very simple. 
+- thing to be aware of, do not return early. make sure to validate all ancestors.
+- fixed using condition
+- both trees are needed to make a decision
+
+```
+
 
 
 
