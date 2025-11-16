@@ -12,6 +12,8 @@ Here are some of my notes
 >
 - [Cheatsheets](/cheatsheets) 
 >
+- [Javascript](/js) 
+>
 - [Guitar](/guitar)
 >
 - [Today I Learned](/til)
