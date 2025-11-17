@@ -29,7 +29,11 @@ date: 2025-11-14
 - [chatgpt](https://chatgpt.com/share/69171a50-cebc-8005-8036-fd528221a2f9) 
 
 
+## iii. BFS
 
+#### 1. [Rotting Oranges](https://leetcode.com/problems/rotting-oranges/description/) 
+- [claude](https://claude.ai/share/0a2606f8-4683-4f48-bebf-a90954215baf) 
+- [chatgpt](https://chatgpt.com/share/691b383a-26e4-8005-8dec-9d6b086a5de4) 
 
 
 ## Resources
@@ -62,7 +66,9 @@ date: 2025-11-14
 
  
 - [Tech Interview Handbook](https://www.techinterviewhandbook.org/software-engineering-interview-guide/) 
-  - contains lot of details and cheatsheets for algos. can be helpful 
+  - contains lot of details and cheatsheets for algos. can be helpful
+
+- [Leetcode Lists](https://leetcode.com/problem-list/erpu74fs/) 
 
 ### 3. Youtube
 

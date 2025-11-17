@@ -42,6 +42,16 @@ date: 2025-11-13
     }
 ```
 
+#### ii. checkBounds
+
+``` cpp
+    bool check_bounds(int i, int j, int row, int col){
+        if(i < 0 || j < 0 || i >= row || j >= col) return false;
+        return true;
+    }
+
+```
+
 
 
 ## Operations
@@ -664,7 +674,119 @@ for (int x : lst)
     cout << vec[0].second;
   ```
 
-### 11. multiset
+
+### 11. Tuples
+
+#### 1. Creating Tuples
+```cpp
+tuple<int, string, double> t1 = {1, "hello", 3.14};
+auto t2 = make_tuple(42, "world", 2.71);
+```
+
+#### 2. Accessing Elements
+```cpp
+tuple<int, string, double> t = {10, "test", 5.5};
+cout << get<0>(t);  // 10
+cout << get<1>(t);  // "test"
+cout << get<2>(t);  // 5.5
+
+queue<tuple<int, int, int>> q;
+auto [i, j, time] = q.front();
+```
+
+#### 3. Tuple Size
+```cpp
+tuple<int, string, double> t;
+cout << tuple_size<decltype(t)>::value;  // 3
+```
+
+#### 4. Unpacking with Structured Bindings (C++17)
+```cpp
+tuple<int, string, double> t = {7, "abc", 9.9};
+auto [x, y, z] = t;
+cout << x << " " << y << " " << z;
+```
+
+#### 5. Unpacking with tie()
+```cpp
+tuple<int, string, double> t = {5, "data", 1.23};
+int a;
+string b;
+double c;
+tie(a, b, c) = t;
+cout << a << " " << b << " " << c;
+```
+
+#### 6. Ignoring Elements with tie()
+```cpp
+tuple<int, string, double> t = {8, "skip", 4.56};
+int x;
+string y;
+tie(x, y, ignore) = t;
+cout << x << " " << y;
+```
+
+#### 7. Nested Tuples
+```cpp
+tuple<int, tuple<string, double>> nested = {1, {"inner", 2.5}};
+cout << get<0>(nested);  // 1
+cout << get<0>(get<1>(nested));  // "inner"
+cout << get<1>(get<1>(nested));  // 2.5
+```
+
+#### 8. Vector of Tuples
+```cpp
+vector<tuple<int, string, double>> vec;
+vec.push_back({1, "first", 1.1});
+vec.emplace_back(2, "second", 2.2);
+cout << get<1>(vec[0]);  // "first"
+```
+
+#### 9. Array of Tuples
+```cpp
+tuple<int, string> arr[] = {{1, "a"}, {2, "b"}, {3, "c"}};
+cout << get<1>(arr[2]);  // "c"
+```
+
+#### 10. Tuple Comparison
+```cpp
+tuple<int, string> t1 = {1, "apple"};
+tuple<int, string> t2 = {1, "banana"};
+if (t1 < t2) {
+    cout << "t1 is less than t2";
+}
+```
+
+#### 11. Tuple Concatenation
+```cpp
+tuple<int, string> t1 = {1, "hello"};
+tuple<double, char> t2 = {3.14, 'A'};
+auto combined = tuple_cat(t1, t2);
+// combined is tuple<int, string, double, char>
+cout << get<2>(combined);  // 3.14
+```
+
+#### 12. Swapping Tuples
+```cpp
+tuple<int, string> t1 = {1, "first"};
+tuple<int, string> t2 = {2, "second"};
+swap(t1, t2);
+cout << get<0>(t1);  // 2
+```
+
+#### 13. Forward as Tuple (for perfect forwarding)
+```cpp
+auto t = forward_as_tuple(10, "text", 3.14);
+// Useful for passing arguments to functions
+```
+
+#### 14. Using tuple with auto
+```cpp
+auto t = make_tuple(100, 'X', 9.99, "end");
+cout << get<3>(t);  // "end"
+```  
+
+### 12. multiset
 #### i. Insertion
 ``` cpp
 multiset<int> ms;

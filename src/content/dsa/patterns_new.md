@@ -1,3 +1,9 @@
+---
+title: Patterns New
+date: 2025-11-14
+---
+
+
 # DSA Pattern Recognition Guide
 
 This repository contains LeetCode solutions organized by patterns and techniques. This guide helps you quickly identify which pattern to use for a given problem and navigate to relevant solutions.

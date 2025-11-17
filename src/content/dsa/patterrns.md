@@ -236,6 +236,15 @@ date: 2025-11-13
 
 ```
 
+#### 7. [Rotting Oranges](https://leetcode.com/problems/rotting-oranges/description/) 
+``` bash
+- It was a normal multi search graph problem. 
+- The important thing here was how to keep track of time. 
+```
+``` cpp
+queue<tuple<int, int, int>> q; // here we have i, j, time
+```
+
 ## Linked List
 
 #### 1. [reverse linked list](https://leetcode.com/problems/reverse-linked-list/description/)
