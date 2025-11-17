@@ -1,5 +1,5 @@
 ---
-title: Web
+title: Misc
 date: 2025-11-14
 ---
 
@@ -17,3 +17,5 @@ date: 2025-11-14
 - [Front End Interview Handbook](https://www.frontendinterviewhandbook.com/coding/algorithms)
   - company wise breakdown of interview questions. (explore to see if useful)
  
+
+- [Let's Build a Simple Database](https://cstack.github.io/db_tutorial/) 

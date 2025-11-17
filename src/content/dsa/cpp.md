@@ -42,18 +42,6 @@ date: 2025-11-13
     }
 ```
 
-#### ii. checkBounds
-
-``` cpp
-    bool check_bounds(int i, int j, int row, int col){
-        if(i < 0 || j < 0 || i >= row || j >= col) return false;
-        return true;
-    }
-
-```
-
-
-
 ## Operations
 
 ### 1. Create a hash map of a to z
