@@ -165,3 +165,9 @@ modprobe lp # loads the module to the top of the list
 ## Resources 
 
 - [The Linux Kernel Module Programming Guide](https://sysprog21.github.io/lkmpg/) 
+- [Linux Productivity Tools pdf](https://www.usenix.org/sites/default/files/conference/protected-files/lisa19_maheshwari.pdf) 
+
+- [Linux Terminal Tools pdf](https://ketancmaheshwari.github.io/pdfs/LPT_LISA.pdf) 
+
+- [Brendan's Linux guide](https://www.brendangregg.com/overview.html)
+    - looks like a bible maybe explore later on.

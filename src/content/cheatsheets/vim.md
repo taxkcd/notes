@@ -256,3 +256,9 @@ const tweets: Tweet[] = data.map((tweet: any) => ({
 }));
 
 ```
+
+
+
+## Resources
+
+[Matt wiki vim](https://wiki.dzx.cz/computer_science/command_line/vim) 
