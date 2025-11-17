@@ -83,6 +83,7 @@ date: 2025-11-14
 - `%` - Jump back and forth to the matching brace, bracket, or parenthesis
 - `J` - Join the current line with the line below `!!!!`
 - `f{char}` - Jump to the next occurrence of the specified character `!!!!`
+- `F{char}` - Jump befind to the specified character `eg F<Space>`
 - `~` - Toggle case (converts lowercase to uppercase and vice versa). keep pressing to move forward
 - `vit` - Select everything between HTML tags
 
