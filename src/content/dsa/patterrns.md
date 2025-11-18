@@ -459,6 +459,59 @@ segmentHead   reverseHead         curr
 ```
 
 
+#### 4.  [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) 
+``` bash
+very easy. solved this on my own. think of the way how i solved it.
+
+```
+
+#### 4. [Reorder List](https://leetcode.com/problems/reorder-list/) 
+
+``` bash
+- three steps, find middle, push on stack and merge at the end.
+- I had the intution but could only write code partially
+- my mistake not making sure the first half has an end (NULL)
+- merging logic, needed a temp. 
+- looked up how to do slow and fast
+
+
+```
+
+##### visualizing
+
+``` bash
+# very good visualization by claude
+Step 1: SAVE
+   temp = curr->next
+   
+   1 → 2 → 3
+   ↑   ↑
+ curr temp
+
+Step 2: CONNECT TO STACK NODE
+   curr->next = top
+   
+   1 → 4
+   ↑   
+ curr  (top from stack)
+
+Step 3: CONNECT STACK NODE TO SAVED
+   top->next = temp
+   
+   1 → 4 → 2 → 3
+           ↑
+         temp
+
+Step 4: ADVANCE
+   curr = temp
+   
+   1 → 4 → 2 → 3
+           ↑
+         curr (ready for next iteration)
+
+```
+
+
 ### Two Pointer approach
 
 #### 1. [3Sum](https://leetcode.com/problems/3sum/)

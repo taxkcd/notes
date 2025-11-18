@@ -13,3 +13,14 @@ date: 2025-11-13
     }
 
 ```
+
+
+#### ii. print stack
+
+``` cpp
+    while (!stk.empty()) {
+        cout << stk.top()->val << " ";
+        stk.pop();
+    }
+
+```

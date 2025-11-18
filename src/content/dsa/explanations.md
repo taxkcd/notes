@@ -36,6 +36,13 @@ date: 2025-11-14
 - [chatgpt](https://chatgpt.com/share/691b383a-26e4-8005-8dec-9d6b086a5de4) 
 
 
+
+## iii. Linked List
+
+#### 1. [Reorder List](https://leetcode.com/problems/reorder-list/) 
+- [claude](https://claude.ai/share/54052dd5-504a-46c7-a404-91ebab3837cb)
+- [chatgpt](https://chatgpt.com/share/691ca064-fad0-8005-82ac-9358870a15f9) 
+
 ## Resources
 
 
