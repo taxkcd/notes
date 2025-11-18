@@ -59,6 +59,71 @@ date: 2025-11-13
 - see chat if don't remember. otherwise draw on paper. really simple
 ```
 
+
+##### visualize
+
+``` bash
+## Stack Trace
+
+# For trees `p = [1,2,3]` and `q = [1,2,3]`
+Call Stack Visualization:
+
+isSameTree(p=1, q=1)                          // Stack Frame 1
+│
+├─→ p.val(1) == q.val(1) ✓
+│
+├─→ isSameTree(p=2, q=2)                      // Stack Frame 2
+│   │
+│   ├─→ p.val(2) == q.val(2) ✓
+│   │
+│   ├─→ isSameTree(p=null, q=null)            // Stack Frame 3
+│   │   └─→ return true                       // Pop Frame 3
+│   │
+│   ├─→ isSameTree(p=null, q=null)            // Stack Frame 4
+│   │   └─→ return true                       // Pop Frame 4
+│   │
+│   └─→ return true                           // Pop Frame 2
+│
+└─→ isSameTree(p=3, q=3)                      // Stack Frame 5
+    │
+    ├─→ p.val(3) == q.val(3) ✓
+    │
+    ├─→ isSameTree(p=null, q=null)            // Stack Frame 6
+    │   └─→ return true                       // Pop Frame 6
+    │
+    ├─→ isSameTree(p=null, q=null)            // Stack Frame 7
+    │   └─→ return true                       // Pop Frame 7
+    │
+    └─→ return true                           // Pop Frame 5
+
+Final return: true                            // Pop Frame 1
+
+
+# Recursion Tree (logical flow)           Call Stack (execution flow)
+# --------------------------------------------------------------------
+
+          (1,1)                             isSameTree(1,1)
+         /     \                                   |
+     (2,2)     (3,3)                        stack grows ↓
+      / \       / \
+   (0,0) (0,0) (0,0)(0,0)
+
+                                          isSameTree(2,2)
+                                                |
+                                          isSameTree(null,null)
+                                          isSameTree(null,null)
+                                          (returns)
+                                          isSameTree(3,3)
+                                                |
+                                          isSameTree(null,null)
+                                          isSameTree(null,null)
+                                          (returns)
+                                          ALL DONE
+
+
+
+```
+
 #### 2. [Validate BST](https://leetcode.com/problems/validate-binary-search-tree/description/)
 
 ``` bash
@@ -66,6 +131,55 @@ date: 2025-11-13
 - thing to be aware of, do not return early. make sure to validate all ancestors.
 - fixed using condition
 - both trees are needed to make a decision
+
+```
+
+##### visualizations
+
+``` bash
+### Invalid BST `[5,1,4,null,null,3,6]`
+Time →
+                                                                    
+CALL    CALL    CALL    RET     CALL    RET     RET     CALL    RET     RET
+#1      #2      #3      true    #4      true    true    #5      false   false
+node=5  node=1  NULL    ↑       NULL    ↑       ↑       node=4  ↑       ↑
+min=-∞  min=-∞  ────────┘       ────────┘       │       min=5   │       │
+max=+∞  max=5                                   │       max=+∞  │       │
+  │       │                                     │       4≤5 ✗   │       │
+  │       └─────────────────────────────────────┘       FAIL    │       │
+  └────────────────────────────────────────────────────────────┘       │
+                                          FINAL RETURN: false ──────────┘
+
+
+### Valid BST `[2,1,3]`
+Time →
+                                                                    
+CALL    CALL    CALL    RET     CALL    RET     RET     CALL    CALL    RET     CALL    RET     RET     RET
+#1      #2      #3      true    #4      true    true    #5      #6      true    #7      true    true    true
+node=2  node=1  NULL    ↑       NULL    ↑       ↑       node=3  NULL    ↑       NULL    ↑       ↑       ↑
+min=-∞  min=-∞  ────────┘       ────────┘       │       min=2   ────────┘       ────────┘       │       │
+max=+∞  max=2                                   │       max=+∞                                  │       │
+  │       │                                     │         │                                     │       │
+  │       └─────────────────────────────────────┘         └─────────────────────────────────────┘       │
+  └────────────────────────────────────────────────────────────────────────────────────────────────────┘
+                                          FINAL RETURN: true                                          
+
+### For Invalid Tree: `[5,1,4,null,null,3,6]`
+
+# Recursion Flow:
+
+helper(LLONG_MIN, 5, LLONG_MAX)
+├─ Check: LLONG_MIN < 5 < LLONG_MAX? ✓
+├─ helper(LLONG_MIN, 1, 5)          // Left child
+│  ├─ Check: LLONG_MIN < 1 < 5? ✓
+│  ├─ helper(LLONG_MIN, null, 1) → true
+│  └─ helper(1, null, 5) → true
+│  └─ Return: true && true = true
+├─ helper(5, 4, LLONG_MAX)          // Right child
+│  ├─ Check: 5 < 4 < LLONG_MAX? ✗  // VIOLATION!
+│  └─ Return: false
+└─ Return: true && false = false    // Final result                                          
+
 
 ```
 
@@ -241,6 +355,61 @@ date: 2025-11-13
 - It was a normal multi search graph problem. 
 - The important thing here was how to keep track of time. 
 ```
+
+##### visualize
+
+``` bash
+main() / test harness
+  ↓
+Solution.orangesRotting(grid)
+  ↓
+  ├─ Initialization Loop (nested for loops)
+  │    └─ Scans each cell: grid[0][0], grid[0][1], ..., grid[m-1][n-1]
+  │    └─ Enqueues rotten oranges: queue.push((0,0,0))
+  │
+  ├─ BFS Loop (while queue not empty)
+  │    ├─ Iteration 1: Process (0,0,0)
+  │    │    ├─ Check direction (0,1) → rot (0,1), enqueue (0,1,1)
+  │    │    ├─ Check direction (1,0) → rot (1,0), enqueue (1,0,1)
+  │    │    ├─ Check direction (0,-1) → out of bounds
+  │    │    └─ Check direction (-1,0) → out of bounds
+  │    │
+  │    ├─ Iteration 2: Process (0,1,1)
+  │    │    ├─ Check direction (0,1) → rot (0,2), enqueue (0,2,2)
+  │    │    ├─ Check direction (1,0) → already rotten
+  │    │    ├─ Check direction (0,-1) → already rotten
+  │    │    └─ Check direction (-1,0) → out of bounds
+  │    │
+  │    ├─ Iteration 3: Process (1,0,1)
+  │    │    └─ [similar neighbor checks]
+  │    │
+  │    └─ ... continues until queue empty
+  │
+  └─ Return maxTime or -1
+
+
+Initial: [(0,0,0)]
+After (0,0,0): [(0,1,1), (1,0,1)]
+After (0,1,1): [(1,0,1), (0,2,2)]
+After (1,0,1): [(0,2,2), (1,1,2)]
+After (0,2,2): [(1,1,2)]
+After (1,1,2): [(2,1,3)]
+After (2,1,3): [(2,2,4)]
+After (2,2,4): []
+
+Time 0:                  Time 1:                  Time 2:
+  [2] 1  1                 [2][2] 1                [2][2][2]
+   1  1  0                 [2] 1  0                [2][2] 0
+   0  1  1                  0  1  1                 0 [2] 1
+
+Time 3:                  Time 4:
+  [2][2][2]               [2][2][2]
+  [2][2] 0                [2][2] 0
+   0 [2] 1                 0 [2][2]
+
+```
+
+
 ``` cpp
 queue<tuple<int, int, int>> q; // here we have i, j, time
 ```
