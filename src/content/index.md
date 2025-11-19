@@ -24,5 +24,9 @@ Here are some of my notes
 >
 - [Roadmaps](/roadmaps)
 >
+- [Books](/books)
+>
+- [Guides](/guides)
+>
 - [Resources](/resources)
 >
