@@ -1,6 +1,6 @@
 ---
 title: Explainations
-date: 2025-11-14
+date: 2025-11-13
 ---
 
 

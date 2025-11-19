@@ -1,6 +1,6 @@
 ---
-title: Patterns New
-date: 2025-11-14
+title: Ideas
+date: 2025-11-13
 ---
 
 

@@ -387,8 +387,10 @@ while (!pq.empty()) {
 
 
 
-#### i. Insertion
+#### i. Insertion/initialization
 ``` cpp
+unordered_set<string> wordSet(wordDict.begin(), wordDict.end());
+
 set<int> s;
 s.insert(1);
 s.insert(2);

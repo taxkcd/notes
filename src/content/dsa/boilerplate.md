@@ -24,3 +24,9 @@ date: 2025-11-13
     }
 
 ```
+
+#### iii. find subdstring b/w a range
+
+``` cpp
+s.substr(j, i-j)
+```
