@@ -171,3 +171,6 @@ modprobe lp # loads the module to the top of the list
 
 - [Brendan's Linux guide](https://www.brendangregg.com/overview.html)
     - looks like a bible maybe explore later on.
+
+
+- [farhanashrafdev/TheUltimateDevOpsBible-ZeroToHero/cheatsheets/linux.md](https://github.com/farhanashrafdev/TheUltimateDevOpsBible-ZeroToHero/blob/main/CheatSheets/linux.md)

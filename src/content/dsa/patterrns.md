@@ -290,6 +290,97 @@ helper(LLONG_MIN, 5, LLONG_MAX)
 ```
 
 
+#### 5. [Word Break](https://leetcode.com/problems/word-break/description/) 
+``` bash
+- found this a bit difficult. maybe b/c dp with no recursion.
+- the main idea is to check all substrings. use 2 loops. outer from 1.
+- initally all the dp would be false. first entry true b/c that is the base case.
+- set for easily lookups
+```
+
+##### visualizations
+
+``` bash
+# claude did an amazing job answering followups. 
+
+s = "leetcode"
+wordDict = ["leet", "code"]
+
+i=1:
+ j=0 → "l"
+
+i=2:
+ j=0 → "le"
+ j=1 → "e"
+
+i=3:
+ j=0 → "lee"
+ j=1 → "ee"
+ j=2 → "e"
+
+i=4:
+ j=0 → "leet"   ✔️ matches → dp[4] = true
+ j=1 → "eet"
+ j=2 → "et"
+ j=3 → "t"
+
+i=5:
+ j=0 → "leetc"
+ j=1 → "eetc"
+ j=2 → "etc"
+ j=3 → "tc"
+ j=4 → "c"
+
+i=6:
+ j=0 → "leetco"
+ j=1 → "eetco"
+ j=2 → "etco"
+ j=3 → "tco"
+ j=4 → "co"
+ j=5 → "o"
+
+i=7:
+ j=0 → "leetcod"
+ j=1 → "eetcod"
+ j=2 → "etcod"
+ j=3 → "tcod"
+ j=4 → "cod"
+ j=5 → "od"
+ j=6 → "d"
+
+i=8:
+ j=0 → "leetcode"
+ j=1 → "eetcode"
+ j=2 → "etcode"
+ j=3 → "tcode"
+ j=4 → "code"   ✔️ matches AND dp[4] = true → dp[8] = true
+ j=5 → "ode"
+ j=6 → "de"
+ j=7 → "e"
+
+----
+# (detail visualization on claude)
+
+Position:     0    1    2    3    4    5    6    7    8
+String:       ""   l    e    e    t    c    o    d    e
+              ↑                        ↑                 ↑
+             dp[0]                   dp[4]             dp[8]
+            (start)              (after "leet")   (after "code")
+
+When we're at `i=4, j=0`:
+j=0 (start position)          i=4 (target position)
+    ↓                             ↓
+    [dp[0]=T] ---"leet"---> [dp[4]=?]
+    
+We're asking: "Can I reach position 4?"
+We check: "I'm at position 0 (which is reachable), 
+           and there's a valid word 'leet' from 0 to 4"
+Therefore: "Yes! I CAN reach position 4"
+Result: dp[4] = true (mark the DESTINATION as reachable)
+```
+
+
+
 
 ## Graphs
 

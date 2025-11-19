@@ -85,3 +85,9 @@ docker run --name s1 --network backend --cap-add=NET_ADMIN -d nhttpd
 # Adds a rule to send all traffic in the network to `10.0.1.3`.
 ip route add 10.0.0.0/24 via 10.0.1.3
 ```
+
+
+
+## Resources
+
+- [farhanashrafdev/TheUltimateDevOpsBible-ZeroToHero/cheatsheets/docker.md](https://github.com/farhanashrafdev/TheUltimateDevOpsBible-ZeroToHero/blob/main/CheatSheets/docker.md)

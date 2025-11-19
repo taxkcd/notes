@@ -136,3 +136,5 @@ rm all other folders
 ```
 
 
+## Resources 
+- [farhanashrafdev/TheUltimateDevOpsBible-ZeroToHero/cheatsheets/git.md](https://github.com/farhanashrafdev/TheUltimateDevOpsBible-ZeroToHero/blob/main/CheatSheets/git.md) 
