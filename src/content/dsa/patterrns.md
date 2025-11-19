@@ -14,6 +14,44 @@ date: 2025-11-13
 - when creating the final output array from them. 
 ```
 
+
+#### 2. [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
+
+``` bash
+- we use Set to store unique elements.
+- then check element - 1 is not in the set then start checking the longest sequeence
+- this works b/c if there is no element less then current, then there is only one possible choice. more then this.
+
+```
+
+##### visualisation
+
+``` bash
+main()
+  └─ longestConsecutive(nums = [100, 4, 200, 1, 3, 2])
+       ├─ Create num_set = {1, 2, 3, 4, 100, 200}
+       ├─ For num = 100:
+       │    ├─ Check num - 1 = 99 in set? No → Start sequence
+       │    ├─ While loop: Check 101? No → Exit
+       │    └─ max_length = 1
+       ├─ For num = 4:
+       │    └─ Check num - 1 = 3 in set? Yes → Skip
+       ├─ For num = 200:
+       │    ├─ Check num - 1 = 199 in set? No → Start sequence
+       │    ├─ While loop: Check 201? No → Exit
+       │    └─ max_length = 1
+       ├─ For num = 1:
+       │    ├─ Check num - 1 = 0 in set? No → Start sequence
+       │    ├─ While loop iteration 1: Check 2? Yes → current_num = 2
+       │    ├─ While loop iteration 2: Check 3? Yes → current_num = 3
+       │    ├─ While loop iteration 3: Check 4? Yes → current_num = 4
+       │    ├─ While loop iteration 4: Check 5? No → Exit
+       │    └─ max_length = 4
+       ├─ For num = 3: Skip (2 exists)
+       ├─ For num = 2: Skip (1 exists)
+       └─ Return max_length = 4
+```
+
 ## Trees
 
 #### 1. [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)

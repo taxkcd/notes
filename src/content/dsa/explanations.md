@@ -28,6 +28,13 @@ date: 2025-11-13
 - [claude](https://claude.ai/share/3b52adc4-a379-417b-9b70-796d93324caf) 
 - [chatgpt](https://chatgpt.com/share/69171a50-cebc-8005-8036-fd528221a2f9) 
 
+#### 2. [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
+
+- [claude](https://claude.ai/share/daecb494-87d0-453f-8482-2c59680c277a) 
+- [chatgpt](https://chatgpt.com/share/691e28e2-a110-8005-9093-fc982dce5ece) 
+
+
+
 
 ## iii. BFS
 
