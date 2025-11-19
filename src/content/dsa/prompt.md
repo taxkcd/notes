@@ -14,13 +14,11 @@ date: 2025-11-13
         - Input & Output
         - Examples
     - **Topics and Patterns**
+    - **Briefly Discuss brute force approach, if any.**
+    - **Write steps on how to solve the problem.**
     - **Solution & Complexity**
         - Key Ideas
         - **Python Solution**
-            - Code
-            - Explanation
-            - Step-by-Step Walkthrough (summarized as a table)
-        - **Java Solution**
             - Code
             - Explanation
             - Step-by-Step Walkthrough (summarized as a table)
