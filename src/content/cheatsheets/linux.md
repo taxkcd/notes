@@ -174,3 +174,8 @@ modprobe lp # loads the module to the top of the list
 
 
 - [farhanashrafdev/TheUltimateDevOpsBible-ZeroToHero/cheatsheets/linux.md](https://github.com/farhanashrafdev/TheUltimateDevOpsBible-ZeroToHero/blob/main/CheatSheets/linux.md)
+
+
+- [FreeBSD Cheat Sheet for Linux Admins](https://blog.hofstede.it/freebsd-cheat-sheet-for-linux-admins/) 
+
+- [Linux Upskill Challenge](https://linuxupskillchallenge.org/01/) 

@@ -26,7 +26,7 @@ Here are some of my notes
 >
 - [Books](/books)
 >
-- [Guides](/guides)
+- [Readings](/readings)
 >
 - [Resources](/resources)
 >

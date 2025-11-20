@@ -8,3 +8,15 @@
 4. [AWS Part 4 — Step-by-Step Guide to Create Your First AWS Auto Scaling Group](https://medium.com/@shivambhadani_/aws-part-4-step-by-step-guide-to-create-your-first-aws-auto-scaling-group-826c1effc0ec) 
 5. [AWS Part 5 — Learn Complete AWS VPC in Just One Article](https://medium.com/@shivambhadani_/aws-part-5-learn-complete-aws-vpc-in-just-one-article-5ffe34888a5c) 
 6. [AWS Part 6 — Step-by-Step Guide to Setting Up AWS ECS Using the EC2 Launch Type with Auto Scaling](https://medium.com/@shivambhadani_/aws-part-6-step-by-step-guide-to-setting-up-aws-ecs-using-the-ec2-launch-type-with-auto-scaling-cb21bf8e7a37) 
+
+
+
+
+### Building
+1. [Building a Database From Scratch](https://stym06.github.io/posts/build-a-db-from-scratch/)
+2. [Production-Grade Container Deployment with Podman Quadlets](https://blog.hofstede.it/production-grade-container-deployment-with-podman-quadlets/) 
+
+
+### Interesting Engineering blogs
+
+1. [A Practical Guide to Building an Online Recommendation System](https://www.databricks.com/blog/guide-to-building-online-recommendation-system)
