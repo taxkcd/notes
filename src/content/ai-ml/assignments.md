@@ -20,7 +20,9 @@ This document contains **ALL** Python assignment solutions in a single master fi
 
 ### Part 1: Conditional Statements (20 Questions)
 
-#### Q1: Q1.py
+#### Q1: Check if number is positive, negative, or zero
+
+##### Write a program that checks if a given number is positive, negative, or zero.
 
 ```python
 # Write a program that checks if a given number is positive, negative, or zero.
@@ -38,7 +40,9 @@ else:
 
 ---
 
-#### Q2: Q2.py
+#### Q2: Classify age as minor, adult, or senior
+
+##### Take a user's age as input and display whether they are a minor, adult, or senior citizen.
 
 ```python
 # Take a user's age as input and display whether they are a minor, adult, or senior citizen.
@@ -56,7 +60,9 @@ else:
 
 ---
 
-#### Q3: Q3.py
+#### Q3: Check if year is a leap year
+
+##### Write a program that checks if a given year is a leap year.
 
 ```python
 # Write a program that checks if a given year is a leap year.
@@ -75,7 +81,9 @@ else:
 
 ---
 
-#### Q4: Q4.py
+#### Q4: Check if number is even or odd
+
+##### Take an integer and check if it's even or odd.
 
 ```python
 # Take an integer and check if it's even or odd.
@@ -91,7 +99,9 @@ else:
 
 ---
 
-#### Q5: Q5.py
+#### Q5: Convert grade percentage to letter grade
+
+##### Ask the user for a grade percentage and display the corresponding letter grade (A, B, C, D, F).
 
 ```python
 # Ask the user for a grade percentage and display the corresponding letter grade (A, B, C, D, F).
@@ -113,7 +123,9 @@ else:
 
 ---
 
-#### Q6: Q6.py
+#### Q6: Find largest of two numbers
+
+##### Write a program to find the largest of two numbers.
 
 ```python
 # Write a program to find the largest of two numbers.
@@ -132,7 +144,9 @@ else:
 
 ---
 
-#### Q7: Q7.py
+#### Q7: Find largest of three numbers
+
+##### Write a program to find the largest of three numbers.
 
 ```python
 # Write a program to find the largest of three numbers.
@@ -152,7 +166,9 @@ else:
 
 ---
 
-#### Q8: Q8.py
+#### Q8: Check if string is palindrome
+
+##### Create a program that checks if a given string is a palindrome.
 
 ```python
 # Create a program that checks if a given string is a palindrome.
@@ -172,7 +188,9 @@ else:
 
 ---
 
-#### Q9: Q9.py
+#### Q9: Check if triangle sides are valid
+
+##### Take three sides of a triangle as input and check if they form a valid triangle.
 
 ```python
 # Take three sides of a triangle as input and check if they form a valid triangle.
@@ -191,7 +209,9 @@ else:
 
 ---
 
-#### Q10: Q10.py
+#### Q10: Check if character is vowel or consonant
+
+##### Write a program to determine if a given character is a vowel or consonant.
 
 ```python
 # Write a program to determine if a given character is a vowel or consonant.
@@ -212,7 +232,9 @@ else:
 
 ---
 
-#### Q11: Q11.py
+#### Q11: Check if number is multiple of 3 and 5
+
+##### Check if a given number is a multiple of both 3 and 5.
 
 ```python
 # Check if a given number is a multiple of both 3 and 5.
@@ -228,7 +250,9 @@ else:
 
 ---
 
-#### Q12: Q12.py
+#### Q12: Classify temperature as freezing, moderate, or hot
+
+##### Write a program that takes a temperature in Celsius and checks if it's freezing, moderate, or hot.
 
 ```python
 # Write a program that takes a temperature in Celsius and checks if it's freezing, moderate, or hot.
@@ -246,7 +270,9 @@ else:
 
 ---
 
-#### Q13: Q13.py
+#### Q13: Simple calculator with basic operations
+
+##### Take two numbers and an operator (+, -, *, /) as input and perform the corresponding operation.
 
 ```python
 # Take two numbers and an operator (+, -, *, /) as input and perform the corresponding operation.
@@ -277,7 +303,9 @@ else:
 
 ---
 
-#### Q14: Q14.py
+#### Q14: Check if year is a century year
+
+##### Check if a year input by the user is a century year.
 
 ```python
 # Check if a year input by the user is a century year.
@@ -293,7 +321,9 @@ else:
 
 ---
 
-#### Q15: Q15.py
+#### Q15: Check if number is within range
+
+##### Write a program to check if a number is within a specified range.
 
 ```python
 # Write a program to check if a number is within a specified range.
@@ -311,7 +341,9 @@ else:
 
 ---
 
-#### Q16: Q16.py
+#### Q16: Classify triangle type
+
+##### Take the length of three sides and classify the triangle (equilateral, isosceles, or scalene).
 
 ```python
 # Take the length of three sides and classify the triangle (equilateral, isosceles, or scalene).
@@ -335,7 +367,9 @@ else:
 
 ---
 
-#### Q17: Q17.py
+#### Q17: Check divisibility by 2, 3, or both
+
+##### Write a program that asks for an integer and checks if it's divisible by 2, 3, or both.
 
 ```python
 # Write a program that asks for an integer and checks if it's divisible by 2, 3, or both.
@@ -358,7 +392,9 @@ else:
 
 ---
 
-#### Q18: Q18.py
+#### Q18: Determine pass or fail based on score
+
+##### Take a user's score and determine if they pass or fail (pass if 50 or above).
 
 ```python
 # Take a user's score and determine if they pass or fail (pass if 50 or above).
@@ -374,7 +410,9 @@ else:
 
 ---
 
-#### Q19: Q19.py
+#### Q19: Check string case (uppercase, lowercase, or mix)
+
+##### Check if a string input is uppercase, lowercase, or a mix.
 
 ```python
 # Check if a string input is uppercase, lowercase, or a mix.
@@ -392,7 +430,9 @@ else:
 
 ---
 
-#### Q20: Q20.py
+#### Q20: Check if number is prime
+
+##### Create a program that evaluates if an inputted number is prime.
 
 ```python
 # Create a program that evaluates if an inputted number is prime.
@@ -419,7 +459,9 @@ else:
 
 ### Part 2: Loops (20 Questions)
 
-#### Q1: Q1.py
+#### Q1: Print numbers 1 to 20
+
+##### Print numbers from 1 to 20 using a for loop.
 
 ```python
 # Print numbers from 1 to 20 using a for loop.
@@ -431,7 +473,9 @@ for i in range(1, 21):
 
 ---
 
-#### Q2: Q2.py
+#### Q2: Print even numbers 1 to 50
+
+##### Use a while loop to print even numbers from 1 to 50.
 
 ```python
 # Use a while loop to print even numbers from 1 to 50.
@@ -446,7 +490,9 @@ while i <= 50:
 
 ---
 
-#### Q3: Q3.py
+#### Q3: Calculate sum of numbers 1 to 100
+
+##### Write a program to calculate the sum of all numbers between 1 and 100.
 
 ```python
 # Write a program to calculate the sum of all numbers between 1 and 100.
@@ -461,7 +507,9 @@ print("Sum of numbers from 1 to 100:", sum)
 
 ---
 
-#### Q4: Q4.py
+#### Q4: Print multiplication table
+
+##### Print the multiplication table of a given number.
 
 ```python
 # Print the multiplication table of a given number.
@@ -475,7 +523,9 @@ for i in range(1, 11):
 
 ---
 
-#### Q5: Q5.py
+#### Q5: Print odd numbers 1 to 100
+
+##### Print all odd numbers between 1 and 100 using a loop.
 
 ```python
 # Print all odd numbers between 1 and 100 using a loop.
@@ -492,7 +542,9 @@ for i in range(1, 101, 2):
 
 ---
 
-#### Q6: Q6.py
+#### Q6: Print each character of string
+
+##### Use a for loop to print each character of a string.
 
 ```python
 # Use a for loop to print each character of a string.
@@ -506,7 +558,9 @@ for char in text:
 
 ---
 
-#### Q7: Q7.py
+#### Q7: Calculate factorial using while loop
+
+##### Find the factorial of a number using a while loop.
 
 ```python
 # Find the factorial of a number using a while loop.
@@ -525,7 +579,9 @@ print("Factorial of", factNum, "is", fac)
 
 ---
 
-#### Q8: Q8.py
+#### Q8: Print numbers 10 down to 1
+
+##### Use a for loop to print numbers from 10 down to 1.
 
 ```python
 # Use a for loop to print numbers from 10 down to 1.
@@ -537,7 +593,9 @@ for i in range(10, 0, -1):
 
 ---
 
-#### Q9: Q9.py
+#### Q9: Print first 10 Fibonacci numbers
+
+##### Write a program to print the first 10 Fibonacci numbers.
 
 ```python
 # Write a program to print the first 10 Fibonacci numbers.
@@ -557,7 +615,9 @@ for i in range(2, 10):
 
 ---
 
-#### Q10: Q10.py
+#### Q10: Count digits in integer
+
+##### Use a loop to count the number of digits in an integer.
 
 ```python
 # Use a loop to count the number of digits in an integer.
@@ -578,7 +638,9 @@ print("Number of digits:", count)
 
 ---
 
-#### Q11: Q11.py
+#### Q11: Reverse a number
+
+##### Print the reverse of a given number.
 
 ```python
 # Print the reverse of a given number.
@@ -597,7 +659,9 @@ print("Reversed number:", reversed_num)
 
 ---
 
-#### Q12: Q12.py
+#### Q12: Print prime numbers 1 to 50
+
+##### Print all prime numbers between 1 and 50.
 
 ```python
 # Print all prime numbers between 1 and 50.
@@ -617,7 +681,9 @@ for num in range(2, 50):
 
 ---
 
-#### Q13: Q13.py
+#### Q13: Print pyramid pattern with stars
+
+##### Use nested loops to print a pyramid pattern of *.
 
 ```python
 # Use nested loops to print a pyramid pattern of *.
@@ -637,7 +703,9 @@ for i in range(1, rows + 1):
 
 ---
 
-#### Q14: Q14.py
+#### Q14: Break loop on condition
+
+##### Write a program that breaks the loop when a certain condition is met.
 
 ```python
 # Write a program that breaks the loop when a certain condition is met.
@@ -656,7 +724,9 @@ print("Loop ended.")
 
 ---
 
-#### Q15: Q15.py
+#### Q15: Sum even and odd numbers separately
+
+##### Print the sum of even and odd numbers separately up to a given number.
 
 ```python
 # Print the sum of even and odd numbers separately up to a given number.
@@ -678,7 +748,9 @@ print("Sum of odd numbers:", odd_sum)
 
 ---
 
-#### Q16: Q16.py
+#### Q16: Calculate sum of digits
+
+##### Create a program to calculate the sum of the digits of an inputted integer.
 
 ```python
 # Create a program to calculate the sum of the digits of an inputted integer.
@@ -696,7 +768,9 @@ print("Sum of digits:", sum)
 
 ---
 
-#### Q17: Q17.py
+#### Q17: Number guessing game
+
+##### Write a program that continues to ask for a number until the correct number is guessed.
 
 ```python
 # Write a program that continues to ask for a number until the correct number is guessed.
@@ -716,7 +790,9 @@ while not correct_number_found:
 
 ---
 
-#### Q18: Q18.py
+#### Q18: Print numbers in reverse range
+
+##### Use a loop to print numbers in reverse order within a given range.
 
 ```python
 # Use a loop to print numbers in reverse order within a given range.
@@ -732,7 +808,9 @@ for i in range(end, start - 1, -1):
 
 ---
 
-#### Q19: Q19.py
+#### Q19: Print squares of numbers 1 to 10
+
+##### Use a for loop to print the square of each number from 1 to 10.
 
 ```python
 # Use a for loop to print the square of each number from 1 to 10.
@@ -744,7 +822,9 @@ for i in range(1, 11):
 
 ---
 
-#### Q20: Q20.py
+#### Q20: Countdown timer
+
+##### Create a program that simulates a countdown timer starting from a given number down to zero.
 
 ```python
 # Create a program that simulates a countdown timer starting from a given number down to zero.
@@ -764,7 +844,9 @@ print("Countdown complete!")
 
 ### Basic Function Questions (6 Questions)
 
-#### Basic Q1: Basic_Q1.py
+#### Basic Q1: Calculate circle area
+
+##### Write a function to calculate the area of a circle given its radius.
 
 ```python
 # Basic Function Questions
@@ -784,7 +866,9 @@ print("Area of circle:", result)
 
 ---
 
-#### Basic Q2: Basic_Q2.py
+#### Basic Q2: Function to sum two numbers
+
+##### Create a function that takes two numbers and returns their sum.
 
 ```python
 # Basic Function Questions
@@ -803,7 +887,9 @@ print("Sum:", result)
 
 ---
 
-#### Basic Q3: Basic_Q3.py
+#### Basic Q3: Factorial using recursion
+
+##### Write a function to find the factorial of a number using recursion.
 
 ```python
 # Basic Function Questions
@@ -824,7 +910,9 @@ print(f"Factorial of {num} is {result}")
 
 ---
 
-#### Basic Q4: Basic_Q4.py
+#### Basic Q4: Reverse string function
+
+##### Write a function that takes a string and returns it reversed.
 
 ```python
 # Basic Function Questions
@@ -842,7 +930,9 @@ print("Reversed string:", reversed_text)
 
 ---
 
-#### Basic Q5: Basic_Q5.py
+#### Basic Q5: Check prime number function
+
+##### Create a function to check if a given number is prime.
 
 ```python
 # Basic Function Questions
@@ -867,7 +957,9 @@ else:
 
 ---
 
-#### Basic Q6: Basic_Q6.py
+#### Basic Q6: Count vowels in string
+
+##### Write a function to count the vowels in a given string.
 
 ```python
 # Basic Function Questions
@@ -892,7 +984,9 @@ print("Number of vowels:", vowel_count)
 
 ### Intermediate Function Questions (6 Questions)
 
-#### Intermediate Q1: Intermediate_Q1.py
+#### Intermediate Q1: Find largest number in list
+
+##### Create a function that takes a list of numbers and returns the largest number.
 
 ```python
 # Intermediate Function Questions
@@ -916,7 +1010,9 @@ print("Largest number:", result)
 
 ---
 
-#### Intermediate Q2: Intermediate_Q2.py
+#### Intermediate Q2: Nth Fibonacci number with recursion
+
+##### Write a function to find the nth Fibonacci number using recursion.
 
 ```python
 # Intermediate Function Questions
@@ -937,7 +1033,9 @@ print(f"The {n}th Fibonacci number is {result}")
 
 ---
 
-#### Intermediate Q3: Intermediate_Q3.py
+#### Intermediate Q3: Check palindrome function
+
+##### Write a function to check whether a string is a palindrome.
 
 ```python
 # Intermediate Function Questions
@@ -959,7 +1057,9 @@ else:
 
 ---
 
-#### Intermediate Q4: Intermediate_Q4.py
+#### Intermediate Q4: Sum even numbers in list
+
+##### Create a function that takes a list of integers and returns the sum of all even numbers.
 
 ```python
 # Intermediate Function Questions
@@ -981,7 +1081,9 @@ print("Sum of even numbers:", result)
 
 ---
 
-#### Intermediate Q5: Intermediate_Q5.py
+#### Intermediate Q5: Calculate GCD of two numbers
+
+##### Write a function to calculate the GCD (Greatest Common Divisor) of two numbers.
 
 ```python
 # Intermediate Function Questions
@@ -1002,7 +1104,9 @@ print(f"GCD of {num1} and {num2} is {result}")
 
 ---
 
-#### Intermediate Q6: Intermediate_Q6.py
+#### Intermediate Q6: Key with maximum value
+
+##### Create a function that accepts a dictionary and returns the key with the highest value.
 
 ```python
 # Intermediate Function Questions
@@ -1030,7 +1134,9 @@ print("Key with highest value:", result)
 
 ### Advanced Function Questions (6 Questions)
 
-#### Advanced Q1: Advanced_Q1.py
+#### Advanced Q1: Calculate power without ** operator
+
+##### Write a function that calculates the power of a number without using the ** operator.
 
 ```python
 # Advanced Function Questions
@@ -1056,7 +1162,9 @@ print(f"{base} raised to the power of {exp} is {result}")
 
 ---
 
-#### Advanced Q2: Advanced_Q2.py
+#### Advanced Q2: Temperature converter
+
+##### Create a function that converts a given temperature from Celsius to Fahrenheit and vice versa.
 
 ```python
 # Advanced Function Questions
@@ -1084,7 +1192,9 @@ print(result)
 
 ---
 
-#### Advanced Q3: Advanced_Q3.py
+#### Advanced Q3: Flatten nested list
+
+##### Write a function to flatten a nested list.
 
 ```python
 # Advanced Function Questions
@@ -1108,7 +1218,9 @@ print("Flattened list:", result)
 
 ---
 
-#### Advanced Q4: Advanced_Q4.py
+#### Advanced Q4: Check if strings are anagrams
+
+##### Create a function to check if two strings are anagrams.
 
 ```python
 # Advanced Function Questions
@@ -1134,7 +1246,9 @@ else:
 
 ---
 
-#### Advanced Q5: Advanced_Q5.py
+#### Advanced Q5: Remove duplicates from list
+
+##### Write a function that takes a list and removes all duplicate elements.
 
 ```python
 # Advanced Function Questions
@@ -1161,7 +1275,9 @@ print("List without duplicates:", result)
 
 ---
 
-#### Advanced Q6: Advanced_Q6.py
+#### Advanced Q6: Count character frequency
+
+##### Create a function that takes a string and counts the frequency of each character.
 
 ```python
 # Advanced Function Questions
@@ -1189,7 +1305,7 @@ for char, count in result.items():
 
 ### Real-world Scenarios (2 Questions)
 
-#### Real-world Q1: RealWorld_Q1.py
+#### Real-world Scenarios
 
 ```python
 # Real-world Scenarios
@@ -1211,7 +1327,7 @@ print(f"Average salary: ${average:.2f}")
 
 ---
 
-#### Real-world Q2: RealWorld_Q2.py
+#### Real-world Scenarios
 
 ```python
 # Real-world Scenarios
@@ -1263,7 +1379,9 @@ else:
 
 ### Basic Operations (Questions 1-5)
 
-#### Q1: Q1.py
+#### Q1: Create student dictionary
+
+##### Create a dictionary student with keys: name, age, and grade. Assign them appropriate values.
 
 ```python
 # Basic Operations
@@ -1281,7 +1399,9 @@ print(student)
 
 ---
 
-#### Q2: Q2.py
+#### Q2: Access dictionary value
+
+##### Access the value of the key grade in the student dictionary.
 
 ```python
 # Basic Operations
@@ -1295,7 +1415,9 @@ print(student["grade"])
 
 ---
 
-#### Q3: Q3.py
+#### Q3: Add key to dictionary
+
+##### Add a new key city to the student dictionary and set its value to "New York".
 
 ```python
 # Basic Operations
@@ -1310,7 +1432,9 @@ print(student)
 
 ---
 
-#### Q4: Q4.py
+#### Q4: Update dictionary value
+
+##### Update the value of the age key in the student dictionary to 20.
 
 ```python
 # Basic Operations
@@ -1325,7 +1449,9 @@ print(student)
 
 ---
 
-#### Q5: Q5.py
+#### Q5: Remove key from dictionary
+
+##### Remove the key city from the student dictionary.
 
 ```python
 # Basic Operations
@@ -1342,7 +1468,9 @@ print(student)
 
 ### Iterating through Dictionaries (Questions 6-10)
 
-#### Q6: Q6.py
+#### Q6: Print all dictionary keys
+
+##### Iterate through the dictionary student and print all keys.
 
 ```python
 # Iterating through Dictionaries
@@ -1357,7 +1485,9 @@ for key in student.keys():
 
 ---
 
-#### Q7: Q7.py
+#### Q7: Print all dictionary values
+
+##### Iterate through the dictionary student and print all values.
 
 ```python
 # Iterating through Dictionaries
@@ -1372,7 +1502,9 @@ for value in student.values():
 
 ---
 
-#### Q8: Q8.py
+#### Q8: Print dictionary key-value pairs
+
+##### Iterate through the dictionary student and print all key-value pairs in the format key: value.
 
 ```python
 # Iterating through Dictionaries
@@ -1387,7 +1519,9 @@ for key, value in student.items():
 
 ---
 
-#### Q9: Q9.py
+#### Q9: Check if key exists
+
+##### Check if the key grade exists in the student dictionary and print True or False.
 
 ```python
 # Iterating through Dictionaries
@@ -1404,7 +1538,9 @@ else:
 
 ---
 
-#### Q10: Q10.py
+#### Q10: Count dictionary keys
+
+##### Count the total number of keys in the student dictionary.
 
 ```python
 # Iterating through Dictionaries
@@ -1420,7 +1556,9 @@ print("Total number of keys:", len(student))
 
 ### Advanced Dictionary Usage (Questions 11-15)
 
-#### Q11: Q11.py
+#### Q11: Merge two dictionaries
+
+##### Merge the following two dictionaries and print the result:
 
 ```python
 # Advanced Dictionary Usage
@@ -1444,7 +1582,9 @@ print(merged)
 
 ---
 
-#### Q12: Q12.py
+#### Q12: Create dictionary from tuples
+
+##### Create a dictionary from a list of tuples: [('name', 'Alice'), ('age', 25), ('city', 'Paris')].
 
 ```python
 # Advanced Dictionary Usage
@@ -1459,7 +1599,9 @@ print(person)
 
 ---
 
-#### Q13: Q13.py
+#### Q13: Sort dictionary keys
+
+##### Sort the keys of the dictionary {'z': 1, 'a': 2, 'c': 3} in ascending order and print the sorted dictionary.
 
 ```python
 # Advanced Dictionary Usage
@@ -1481,7 +1623,9 @@ print(sorted_dict)
 
 ---
 
-#### Q14: Q14.py
+#### Q14: Reverse dictionary keys and values
+
+##### Reverse the dictionary {'a': 1, 'b': 2, 'c': 3} so that keys become values and values become keys.
 
 ```python
 # Advanced Dictionary Usage
@@ -1499,7 +1643,9 @@ print(reversed_dict)
 
 ---
 
-#### Q15: Q15.py
+#### Q15: Write a Python function to check if two
+
+##### Write a Python function to check if two dictionaries are identical (contain the same key-value pairs).
 
 ```python
 # Advanced Dictionary Usage
@@ -1522,7 +1668,9 @@ print(are_identical(dict1, dict3))  # False
 
 ### Nested Dictionaries (Questions 16-20)
 
-#### Q16: Q16.py
+#### Q16: Create a nested dictionary to represent the following
+
+##### Create a nested dictionary to represent the following data:
 
 ```python
 # Nested Dictionaries
@@ -1549,7 +1697,9 @@ print(person)
 
 ---
 
-#### Q17: Q17.py
+#### Q17: Access the value of the City key in
+
+##### Access the value of the City key in the nested dictionary from the previous question.
 
 ```python
 # Nested Dictionaries
@@ -1570,7 +1720,9 @@ print(person["Address"]["City"])
 
 ---
 
-#### Q18: Q18.py
+#### Q18: Add a new key Phone to the nested
+
+##### Add a new key Phone to the nested dictionary with the value "123-456-7890".
 
 ```python
 # Nested Dictionaries
@@ -1592,7 +1744,9 @@ print(person)
 
 ---
 
-#### Q19: Q19.py
+#### Q19: Delete the Address key from the nested dictionary.
+
+##### Delete the Address key from the nested dictionary.
 
 ```python
 # Nested Dictionaries
@@ -1614,7 +1768,9 @@ print(person)
 
 ---
 
-#### Q20: Q20.py
+#### Q20: Iterate through all the keys in the outermost
+
+##### Iterate through all the keys in the outermost level of the nested dictionary and print them.
 
 ```python
 # Nested Dictionaries
@@ -1638,7 +1794,9 @@ for key in person.keys():
 
 ### Applications of Dictionaries (Questions 21-25)
 
-#### Q21: Q21.py
+#### Q21: Use a dictionary to count the occurrences of
+
+##### Use a dictionary to count the occurrences of each word in the string "hello world hello python world".
 
 ```python
 # Applications of Dictionaries
@@ -1660,7 +1818,9 @@ print(word_count)
 
 ---
 
-#### Q22: Q22.py
+#### Q22: Write a Python program to find the key
+
+##### Write a Python program to find the key with the maximum value in the dictionary {'a': 10, 'b': 15, 'c': 7}.
 
 ```python
 # Applications of Dictionaries
@@ -1685,7 +1845,9 @@ print("Key with maximum value:", max_key)
 
 ---
 
-#### Q23: Q23.py
+#### Q23: Create a dictionary to map numbers 1 to
+
+##### Create a dictionary to map numbers 1 to 5 to their squares (e.g., {1: 1, 2: 4, 3: 9, ...}).
 
 ```python
 # Applications of Dictionaries
@@ -1705,7 +1867,9 @@ print(squares_dict)
 
 ---
 
-#### Q24: Q24.py
+#### Q24: Write a Python program to remove duplicate values
+
+##### Write a Python program to remove duplicate values from the dictionary {'a': 10, 'b': 15, 'c': 10, 'd': 15}.
 
 ```python
 # Applications of Dictionaries
@@ -1728,7 +1892,9 @@ print(unique_dict)
 
 ---
 
-#### Q25: Q25.py
+#### Q25: Get dictionary value with default
+
+##### Write a Python function that accepts a dictionary and a key, and returns the value associated with the key.
 
 ```python
 # Applications of Dictionaries
@@ -1753,7 +1919,9 @@ print(get_value(student, "city"))   # Key not found
 
 ### Challenging Problems (Questions 26-30)
 
-#### Q26: Q26.py
+#### Q26: Add values of matching dictionary keys
+
+##### Given two dictionaries dict1 = {'a': 5, 'b': 10} and dict2 = {'a': 3, 'b': 7},
 
 ```python
 # Challenging Problems
@@ -1781,7 +1949,9 @@ print(result)
 
 ---
 
-#### Q27: Q27.py
+#### Q27: Write a Python program to create a dictionary
+
+##### Write a Python program to create a dictionary where the keys are the first n positive integers,
 
 ```python
 # Challenging Problems
@@ -1804,7 +1974,9 @@ print(cubes_dict)
 
 ---
 
-#### Q28: Q28.py
+#### Q28: Flatten the following nested dictionary into a single-level
+
+##### Flatten the following nested dictionary into a single-level dictionary:
 
 ```python
 # Challenging Problems
@@ -1830,7 +2002,9 @@ print(flattened)
 
 ---
 
-#### Q29: Q29.py
+#### Q29: Split dictionary by odd/even values
+
+##### Write a Python program to split a dictionary into two based on whether the values are odd or even.
 
 ```python
 # Challenging Problems
@@ -1854,7 +2028,9 @@ print("Odd values dictionary:", odd_dict)
 
 ---
 
-#### Q30: Q30.py
+#### Q30: Create a dictionary comprehension to filter out all
+
+##### Create a dictionary comprehension to filter out all keys in {'a': 1, 'b': 2, 'c': 3, 'd': 4}
 
 ```python
 # Challenging Problems
@@ -1879,7 +2055,9 @@ print(filtered)
 
 ### Part 1: Conditional Statements (20 Questions)
 
-#### Q1: Q1.py
+#### Q1: Check if number is positive, negative, or zero
+
+##### Write a program that checks if a given number is positive, negative, or zero.
 
 ```python
 # Write a program that checks if a given number is positive, negative, or zero.
@@ -1897,7 +2075,9 @@ else:
 
 ---
 
-#### Q2: Q2.py
+#### Q2: Classify age as minor, adult, or senior
+
+##### Take a user's age as input and display whether they are a minor, adult, or senior citizen.
 
 ```python
 # Take a user's age as input and display whether they are a minor, adult, or senior citizen.
@@ -1915,7 +2095,9 @@ else:
 
 ---
 
-#### Q3: Q3.py
+#### Q3: Check if year is a leap year
+
+##### Write a program that checks if a given year is a leap year.
 
 ```python
 # Write a program that checks if a given year is a leap year.
@@ -1934,7 +2116,9 @@ else:
 
 ---
 
-#### Q4: Q4.py
+#### Q4: Check if number is even or odd
+
+##### Take an integer and check if it's even or odd.
 
 ```python
 # Take an integer and check if it's even or odd.
@@ -1950,7 +2134,9 @@ else:
 
 ---
 
-#### Q5: Q5.py
+#### Q5: Convert grade percentage to letter grade
+
+##### Ask the user for a grade percentage and display the corresponding letter grade (A, B, C, D, F).
 
 ```python
 # Ask the user for a grade percentage and display the corresponding letter grade (A, B, C, D, F).
@@ -1972,7 +2158,9 @@ else:
 
 ---
 
-#### Q6: Q6.py
+#### Q6: Find largest of two numbers
+
+##### Write a program to find the largest of two numbers.
 
 ```python
 # Write a program to find the largest of two numbers.
@@ -1991,7 +2179,9 @@ else:
 
 ---
 
-#### Q7: Q7.py
+#### Q7: Find largest of three numbers
+
+##### Write a program to find the largest of three numbers.
 
 ```python
 # Write a program to find the largest of three numbers.
@@ -2011,7 +2201,9 @@ else:
 
 ---
 
-#### Q8: Q8.py
+#### Q8: Check if string is palindrome
+
+##### Create a program that checks if a given string is a palindrome.
 
 ```python
 # Create a program that checks if a given string is a palindrome.
@@ -2031,7 +2223,9 @@ else:
 
 ---
 
-#### Q9: Q9.py
+#### Q9: Check if triangle sides are valid
+
+##### Take three sides of a triangle as input and check if they form a valid triangle.
 
 ```python
 # Take three sides of a triangle as input and check if they form a valid triangle.
@@ -2050,7 +2244,9 @@ else:
 
 ---
 
-#### Q10: Q10.py
+#### Q10: Check if character is vowel or consonant
+
+##### Write a program to determine if a given character is a vowel or consonant.
 
 ```python
 # Write a program to determine if a given character is a vowel or consonant.
@@ -2071,7 +2267,9 @@ else:
 
 ---
 
-#### Q11: Q11.py
+#### Q11: Check if number is multiple of 3 and 5
+
+##### Check if a given number is a multiple of both 3 and 5.
 
 ```python
 # Check if a given number is a multiple of both 3 and 5.
@@ -2087,7 +2285,9 @@ else:
 
 ---
 
-#### Q12: Q12.py
+#### Q12: Classify temperature as freezing, moderate, or hot
+
+##### Write a program that takes a temperature in Celsius and checks if it's freezing, moderate, or hot.
 
 ```python
 # Write a program that takes a temperature in Celsius and checks if it's freezing, moderate, or hot.
@@ -2105,7 +2305,9 @@ else:
 
 ---
 
-#### Q13: Q13.py
+#### Q13: Simple calculator with basic operations
+
+##### Take two numbers and an operator (+, -, *, /) as input and perform the corresponding operation.
 
 ```python
 # Take two numbers and an operator (+, -, *, /) as input and perform the corresponding operation.
@@ -2136,7 +2338,9 @@ else:
 
 ---
 
-#### Q14: Q14.py
+#### Q14: Check if year is a century year
+
+##### Check if a year input by the user is a century year.
 
 ```python
 # Check if a year input by the user is a century year.
@@ -2152,7 +2356,9 @@ else:
 
 ---
 
-#### Q15: Q15.py
+#### Q15: Check if number is within range
+
+##### Write a program to check if a number is within a specified range.
 
 ```python
 # Write a program to check if a number is within a specified range.
@@ -2170,7 +2376,9 @@ else:
 
 ---
 
-#### Q16: Q16.py
+#### Q16: Classify triangle type
+
+##### Take the length of three sides and classify the triangle (equilateral, isosceles, or scalene).
 
 ```python
 # Take the length of three sides and classify the triangle (equilateral, isosceles, or scalene).
@@ -2194,7 +2402,9 @@ else:
 
 ---
 
-#### Q17: Q17.py
+#### Q17: Check divisibility by 2, 3, or both
+
+##### Write a program that asks for an integer and checks if it's divisible by 2, 3, or both.
 
 ```python
 # Write a program that asks for an integer and checks if it's divisible by 2, 3, or both.
@@ -2217,7 +2427,9 @@ else:
 
 ---
 
-#### Q18: Q18.py
+#### Q18: Determine pass or fail based on score
+
+##### Take a user's score and determine if they pass or fail (pass if 50 or above).
 
 ```python
 # Take a user's score and determine if they pass or fail (pass if 50 or above).
@@ -2233,7 +2445,9 @@ else:
 
 ---
 
-#### Q19: Q19.py
+#### Q19: Check string case (uppercase, lowercase, or mix)
+
+##### Check if a string input is uppercase, lowercase, or a mix.
 
 ```python
 # Check if a string input is uppercase, lowercase, or a mix.
@@ -2251,7 +2465,9 @@ else:
 
 ---
 
-#### Q20: Q20.py
+#### Q20: Check if number is prime
+
+##### Create a program that evaluates if an inputted number is prime.
 
 ```python
 # Create a program that evaluates if an inputted number is prime.
@@ -2278,7 +2494,9 @@ else:
 
 ### Part 2: Loops (20 Questions)
 
-#### Q1: Q1.py
+#### Q1: Print numbers 1 to 20
+
+##### Print numbers from 1 to 20 using a for loop.
 
 ```python
 # Print numbers from 1 to 20 using a for loop.
@@ -2290,7 +2508,9 @@ for i in range(1, 21):
 
 ---
 
-#### Q2: Q2.py
+#### Q2: Print even numbers 1 to 50
+
+##### Use a while loop to print even numbers from 1 to 50.
 
 ```python
 # Use a while loop to print even numbers from 1 to 50.
@@ -2305,7 +2525,9 @@ while i <= 50:
 
 ---
 
-#### Q3: Q3.py
+#### Q3: Calculate sum of numbers 1 to 100
+
+##### Write a program to calculate the sum of all numbers between 1 and 100.
 
 ```python
 # Write a program to calculate the sum of all numbers between 1 and 100.
@@ -2320,7 +2542,9 @@ print("Sum of numbers from 1 to 100:", sum)
 
 ---
 
-#### Q4: Q4.py
+#### Q4: Print multiplication table
+
+##### Print the multiplication table of a given number.
 
 ```python
 # Print the multiplication table of a given number.
@@ -2334,7 +2558,9 @@ for i in range(1, 11):
 
 ---
 
-#### Q5: Q5.py
+#### Q5: Print odd numbers 1 to 100
+
+##### Print all odd numbers between 1 and 100 using a loop.
 
 ```python
 # Print all odd numbers between 1 and 100 using a loop.
@@ -2351,7 +2577,9 @@ for i in range(1, 101, 2):
 
 ---
 
-#### Q6: Q6.py
+#### Q6: Print each character of string
+
+##### Use a for loop to print each character of a string.
 
 ```python
 # Use a for loop to print each character of a string.
@@ -2365,7 +2593,9 @@ for char in text:
 
 ---
 
-#### Q7: Q7.py
+#### Q7: Calculate factorial using while loop
+
+##### Find the factorial of a number using a while loop.
 
 ```python
 # Find the factorial of a number using a while loop.
@@ -2384,7 +2614,9 @@ print("Factorial of", factNum, "is", fac)
 
 ---
 
-#### Q8: Q8.py
+#### Q8: Print numbers 10 down to 1
+
+##### Use a for loop to print numbers from 10 down to 1.
 
 ```python
 # Use a for loop to print numbers from 10 down to 1.
@@ -2396,7 +2628,9 @@ for i in range(10, 0, -1):
 
 ---
 
-#### Q9: Q9.py
+#### Q9: Print first 10 Fibonacci numbers
+
+##### Write a program to print the first 10 Fibonacci numbers.
 
 ```python
 # Write a program to print the first 10 Fibonacci numbers.
@@ -2416,7 +2650,9 @@ for i in range(2, 10):
 
 ---
 
-#### Q10: Q10.py
+#### Q10: Count digits in integer
+
+##### Use a loop to count the number of digits in an integer.
 
 ```python
 # Use a loop to count the number of digits in an integer.
@@ -2437,7 +2673,9 @@ print("Number of digits:", count)
 
 ---
 
-#### Q11: Q11.py
+#### Q11: Reverse a number
+
+##### Print the reverse of a given number.
 
 ```python
 # Print the reverse of a given number.
@@ -2456,7 +2694,9 @@ print("Reversed number:", reversed_num)
 
 ---
 
-#### Q12: Q12.py
+#### Q12: Print prime numbers 1 to 50
+
+##### Print all prime numbers between 1 and 50.
 
 ```python
 # Print all prime numbers between 1 and 50.
@@ -2476,7 +2716,9 @@ for num in range(2, 50):
 
 ---
 
-#### Q13: Q13.py
+#### Q13: Print pyramid pattern with stars
+
+##### Use nested loops to print a pyramid pattern of *.
 
 ```python
 # Use nested loops to print a pyramid pattern of *.
@@ -2496,7 +2738,9 @@ for i in range(1, rows + 1):
 
 ---
 
-#### Q14: Q14.py
+#### Q14: Break loop on condition
+
+##### Write a program that breaks the loop when a certain condition is met.
 
 ```python
 # Write a program that breaks the loop when a certain condition is met.
@@ -2515,7 +2759,9 @@ print("Loop ended.")
 
 ---
 
-#### Q15: Q15.py
+#### Q15: Sum even and odd numbers separately
+
+##### Print the sum of even and odd numbers separately up to a given number.
 
 ```python
 # Print the sum of even and odd numbers separately up to a given number.
@@ -2537,7 +2783,9 @@ print("Sum of odd numbers:", odd_sum)
 
 ---
 
-#### Q16: Q16.py
+#### Q16: Calculate sum of digits
+
+##### Create a program to calculate the sum of the digits of an inputted integer.
 
 ```python
 # Create a program to calculate the sum of the digits of an inputted integer.
@@ -2555,7 +2803,9 @@ print("Sum of digits:", sum)
 
 ---
 
-#### Q17: Q17.py
+#### Q17: Number guessing game
+
+##### Write a program that continues to ask for a number until the correct number is guessed.
 
 ```python
 # Write a program that continues to ask for a number until the correct number is guessed.
@@ -2575,7 +2825,9 @@ while not correct_number_found:
 
 ---
 
-#### Q18: Q18.py
+#### Q18: Print numbers in reverse range
+
+##### Use a loop to print numbers in reverse order within a given range.
 
 ```python
 # Use a loop to print numbers in reverse order within a given range.
@@ -2591,7 +2843,9 @@ for i in range(end, start - 1, -1):
 
 ---
 
-#### Q19: Q19.py
+#### Q19: Print squares of numbers 1 to 10
+
+##### Use a for loop to print the square of each number from 1 to 10.
 
 ```python
 # Use a for loop to print the square of each number from 1 to 10.
@@ -2603,7 +2857,9 @@ for i in range(1, 11):
 
 ---
 
-#### Q20: Q20.py
+#### Q20: Countdown timer
+
+##### Create a program that simulates a countdown timer starting from a given number down to zero.
 
 ```python
 # Create a program that simulates a countdown timer starting from a given number down to zero.
@@ -2625,7 +2881,9 @@ print("Countdown complete!")
 
 ### Basic Function Questions (6 Questions)
 
-#### Basic Q1: Basic_Q1.py
+#### Basic Q1: Calculate circle area
+
+##### Write a function to calculate the area of a circle given its radius.
 
 ```python
 # Basic Function Questions
@@ -2645,7 +2903,9 @@ print("Area of circle:", result)
 
 ---
 
-#### Basic Q2: Basic_Q2.py
+#### Basic Q2: Function to sum two numbers
+
+##### Create a function that takes two numbers and returns their sum.
 
 ```python
 # Basic Function Questions
@@ -2664,7 +2924,9 @@ print("Sum:", result)
 
 ---
 
-#### Basic Q3: Basic_Q3.py
+#### Basic Q3: Factorial using recursion
+
+##### Write a function to find the factorial of a number using recursion.
 
 ```python
 # Basic Function Questions
@@ -2685,7 +2947,9 @@ print(f"Factorial of {num} is {result}")
 
 ---
 
-#### Basic Q4: Basic_Q4.py
+#### Basic Q4: Reverse string function
+
+##### Write a function that takes a string and returns it reversed.
 
 ```python
 # Basic Function Questions
@@ -2703,7 +2967,9 @@ print("Reversed string:", reversed_text)
 
 ---
 
-#### Basic Q5: Basic_Q5.py
+#### Basic Q5: Check prime number function
+
+##### Create a function to check if a given number is prime.
 
 ```python
 # Basic Function Questions
@@ -2728,7 +2994,9 @@ else:
 
 ---
 
-#### Basic Q6: Basic_Q6.py
+#### Basic Q6: Count vowels in string
+
+##### Write a function to count the vowels in a given string.
 
 ```python
 # Basic Function Questions
@@ -2753,7 +3021,9 @@ print("Number of vowels:", vowel_count)
 
 ### Intermediate Function Questions (6 Questions)
 
-#### Intermediate Q1: Intermediate_Q1.py
+#### Intermediate Q1: Find largest number in list
+
+##### Create a function that takes a list of numbers and returns the largest number.
 
 ```python
 # Intermediate Function Questions
@@ -2777,7 +3047,9 @@ print("Largest number:", result)
 
 ---
 
-#### Intermediate Q2: Intermediate_Q2.py
+#### Intermediate Q2: Nth Fibonacci number with recursion
+
+##### Write a function to find the nth Fibonacci number using recursion.
 
 ```python
 # Intermediate Function Questions
@@ -2798,7 +3070,9 @@ print(f"The {n}th Fibonacci number is {result}")
 
 ---
 
-#### Intermediate Q3: Intermediate_Q3.py
+#### Intermediate Q3: Check palindrome function
+
+##### Write a function to check whether a string is a palindrome.
 
 ```python
 # Intermediate Function Questions
@@ -2820,7 +3094,9 @@ else:
 
 ---
 
-#### Intermediate Q4: Intermediate_Q4.py
+#### Intermediate Q4: Sum even numbers in list
+
+##### Create a function that takes a list of integers and returns the sum of all even numbers.
 
 ```python
 # Intermediate Function Questions
@@ -2842,7 +3118,9 @@ print("Sum of even numbers:", result)
 
 ---
 
-#### Intermediate Q5: Intermediate_Q5.py
+#### Intermediate Q5: Calculate GCD of two numbers
+
+##### Write a function to calculate the GCD (Greatest Common Divisor) of two numbers.
 
 ```python
 # Intermediate Function Questions
@@ -2863,7 +3141,9 @@ print(f"GCD of {num1} and {num2} is {result}")
 
 ---
 
-#### Intermediate Q6: Intermediate_Q6.py
+#### Intermediate Q6: Key with maximum value
+
+##### Create a function that accepts a dictionary and returns the key with the highest value.
 
 ```python
 # Intermediate Function Questions
@@ -2891,7 +3171,9 @@ print("Key with highest value:", result)
 
 ### Advanced Function Questions (6 Questions)
 
-#### Advanced Q1: Advanced_Q1.py
+#### Advanced Q1: Calculate power without ** operator
+
+##### Write a function that calculates the power of a number without using the ** operator.
 
 ```python
 # Advanced Function Questions
@@ -2917,7 +3199,9 @@ print(f"{base} raised to the power of {exp} is {result}")
 
 ---
 
-#### Advanced Q2: Advanced_Q2.py
+#### Advanced Q2: Temperature converter
+
+##### Create a function that converts a given temperature from Celsius to Fahrenheit and vice versa.
 
 ```python
 # Advanced Function Questions
@@ -2945,7 +3229,9 @@ print(result)
 
 ---
 
-#### Advanced Q3: Advanced_Q3.py
+#### Advanced Q3: Flatten nested list
+
+##### Write a function to flatten a nested list.
 
 ```python
 # Advanced Function Questions
@@ -2969,7 +3255,9 @@ print("Flattened list:", result)
 
 ---
 
-#### Advanced Q4: Advanced_Q4.py
+#### Advanced Q4: Check if strings are anagrams
+
+##### Create a function to check if two strings are anagrams.
 
 ```python
 # Advanced Function Questions
@@ -2995,7 +3283,9 @@ else:
 
 ---
 
-#### Advanced Q5: Advanced_Q5.py
+#### Advanced Q5: Remove duplicates from list
+
+##### Write a function that takes a list and removes all duplicate elements.
 
 ```python
 # Advanced Function Questions
@@ -3022,7 +3312,9 @@ print("List without duplicates:", result)
 
 ---
 
-#### Advanced Q6: Advanced_Q6.py
+#### Advanced Q6: Count character frequency
+
+##### Create a function that takes a string and counts the frequency of each character.
 
 ```python
 # Advanced Function Questions
@@ -3050,7 +3342,7 @@ for char, count in result.items():
 
 ### Real-world Scenarios (2 Questions)
 
-#### Real-world Q1: RealWorld_Q1.py
+#### Real-world Scenarios
 
 ```python
 # Real-world Scenarios
@@ -3072,7 +3364,7 @@ print(f"Average salary: ${average:.2f}")
 
 ---
 
-#### Real-world Q2: RealWorld_Q2.py
+#### Real-world Scenarios
 
 ```python
 # Real-world Scenarios
