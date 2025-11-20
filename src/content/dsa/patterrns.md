@@ -24,6 +24,14 @@ date: 2025-11-13
 
 ```
 
+
+#### 3. [Two Sum II - Input Array Is Sorted](https://claude.ai/share/1c6b97fb-b37a-4f1a-8669-7f00553ea666)
+
+``` bash
+- indices description confused me but it is the same. easy
+```
+
+
 ##### visualisation
 
 ``` bash
