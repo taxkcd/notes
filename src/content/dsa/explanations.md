@@ -34,10 +34,16 @@ date: 2025-11-13
 - [chatgpt](https://chatgpt.com/share/691e28e2-a110-8005-9093-fc982dce5ece) 
 
 
-#### 4. [Two Sum II - Input Array Is Sorted](https://claude.ai/share/1c6b97fb-b37a-4f1a-8669-7f00553ea666)
+#### 3. [Two Sum II - Input Array Is Sorted](https://claude.ai/share/1c6b97fb-b37a-4f1a-8669-7f00553ea666)
 
 - [claude](https://claude.ai/share/2001a832-351d-4e00-8331-ee791ec56b42)
 - [chatgpt](https://chatgpt.com/share/691e7086-5f70-8005-9140-a793bf04de6d)
+
+#### 4. [3Sum](https://leetcode.com/problems/3sum/)
+
+- [claude](https://claude.ai/share/59bf338d-0b48-4f3b-9265-aa9cb28486b1)
+- [chatgpt](https://chatgpt.com/share/691f0c0f-3fa8-8005-8e86-cfe12c416b23) 
+
 
 
 ## iii. BFS

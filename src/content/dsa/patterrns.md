@@ -658,6 +658,52 @@ Step 4: ADVANCE
 - most imp is how to skip duplicates. 2 ways. one in outer loop
 - other when we are moving left and right.
 ```
+
+##### visualizations
+
+``` bash
+Array after sorting: [-4, -1, -1, 0, 1, 2]
+                      ↑   ↑              ↑
+                      i   left          right
+
+Search Space Visualization:
+
+Level 1 (i=0, nums[i]=-4, target=4):
+        -4  [-1, -1, 0, 1, 2]
+             ↑              ↑
+           left          right
+        
+        Searching for pairs that sum to 4:
+        -1 + 2 = 1 (too small) → move left
+        -1 + 2 = 1 (too small) → move left
+         0 + 2 = 2 (too small) → move left
+         1 + 2 = 3 (too small) → move left
+        [No valid triplets found]
+
+Level 2 (i=1, nums[i]=-1, target=1):
+        -1  [-1, 0, 1, 2]
+             ↑         ↑
+           left     right
+        
+        Searching for pairs that sum to 1:
+        -1 + 2 = 1 ✓ → Found [-1, -1, 2]
+        (skip duplicate -1)
+         0 + 1 = 1 ✓ → Found [-1, 0, 1]
+        
+Level 3 (i=2, nums[i]=-1):
+        -1  (skipped - duplicate)
+
+Level 4 (i=3, nums[i]=0, target=0):
+         0  [1, 2]
+             ↑  ↑
+           left right
+        
+        Searching for pairs that sum to 0:
+        1 + 2 = 3 (too large) → move right
+        [Loop exits]
+
+```
+
 #### 2. [move zeros](https://leetcode.com/problems/move-zeroes/description/)
 
 ``` bash
