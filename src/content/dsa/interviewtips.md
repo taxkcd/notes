@@ -6,7 +6,12 @@ date: 2025-11-13
 ![[interview_speed.png]]
 
 
-## Commends
+## General
+
+- it is better to go through the brute force approach and see it failing and then jump into the optimized approach
+
+
+## Comments
 
 #### i amagicalbook on time management
 
@@ -37,6 +42,9 @@ not having practiced actually coding enough (a bit silly tbh, but i'd know the s
 
 The most impactful change I made was being able to write out boilerplate & template code quickly while reasoning/explaining the solution (through more practice). This way, when I was actually writing the core logic, I had more time and could discuss details of approach without wasting time on simple stuff.
 ```
+
+
+
 
 ## Resources
 

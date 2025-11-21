@@ -44,6 +44,9 @@ date: 2025-11-13
 - [claude](https://claude.ai/share/59bf338d-0b48-4f3b-9265-aa9cb28486b1)
 - [chatgpt](https://chatgpt.com/share/691f0c0f-3fa8-8005-8e86-cfe12c416b23) 
 
+#### 5 [Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/) 
+- [claude](https://claude.ai/share/246acb28-01cf-41c5-bbf6-d8c5c7628b07) 
+- [chatgpt](https://chatgpt.com/share/691fc078-fcec-8005-aa43-0c6e4b23c6f8)
 
 
 ## iii. BFS

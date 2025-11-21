@@ -60,6 +60,17 @@ main()
        └─ Return max_length = 4
 ```
 
+
+
+
+#### 4 [Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/) 
+``` bash
+- I was using sliding window here in the brute force sense.
+- later I realized we have to precompute one window.
+- and next time thing about the boundry (that is where I was lagging)
+
+```
+
 ## Trees
 
 #### 1. [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
