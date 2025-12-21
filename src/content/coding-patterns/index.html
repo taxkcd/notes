@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Interview Patterns</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        .sidebar {
+            width: 320px;
+            background: #ffffff;
+            border-right: 1px solid #e0e0e0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            border-bottom: 1px solid #34495e;
+        }
+
+        .sidebar-header h1 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-header p {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .search-box {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .file-tree {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .folder {
+            margin-bottom: 5px;
+        }
+
+        .folder-header {
+            padding: 8px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #2c3e50;
+            transition: background 0.2s;
+        }
+
+        .folder-header:hover {
+            background: #f0f0f0;
+        }
+
+        .folder-header.active {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .folder-icon {
+            margin-right: 8px;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+
+        .folder.open .folder-icon {
+            transform: rotate(90deg);
+        }
+
+        .folder-content {
+            display: none;
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+
+        .folder.open .folder-content {
+            display: block;
+        }
+
+        .file-item {
+            padding: 6px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #555;
+            transition: background 0.2s;
+            margin-bottom: 2px;
+        }
+
+        .file-item:hover {
+            background: #f5f5f5;
+        }
+
+        .file-item.active {
+            background: #3498db;
+            color: white;
+        }
+
+        .file-icon {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .content-header {
+            padding: 15px 20px;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .content-header h2 {
+            font-size: 16px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .breadcrumb {
+            font-size: 12px;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        .content-body {
+            flex: 1;
+            overflow: auto;
+            background: white;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .welcome-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            color: #999;
+        }
+
+        .welcome-screen div {
+            max-width: 400px;
+        }
+
+        .welcome-screen h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .welcome-screen p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: absolute;
+                left: -320px;
+                z-index: 1000;
+                transition: left 0.3s;
+                box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            }
+
+            .sidebar.mobile-open {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+                padding: 10px;
+                background: #3498db;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+        }
+
+        .mobile-toggle {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h1>📚 Coding Interview Patterns</h1>
+            <p>Grokking the Coding Interview</p>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search files...">
+        </div>
+
+        <div class="file-tree" id="fileTree"></div>
+    </div>
+
+    <div class="content-area">
+        <div class="content-header">
+            <div>
+                <h2 id="contentTitle">Welcome</h2>
+                <div class="breadcrumb" id="breadcrumb"></div>
+            </div>
+        </div>
+        
+        <div class="content-body" id="contentBody">
+            <div class="welcome-screen">
+                <div>
+                    <h3>👋 Welcome</h3>
+                    <p>Select a file from the sidebar to view its content. Use the search box to quickly find specific topics.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // File structure - Replace this with your actual structure
+        
+        const fileStructure = {
+  "10PatternTwoHeaps": {
+    folders: {
+      "1Introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2FindTheMedianOfANumberStreamMedium": {
+        files: [
+          "11findTheMedianOfANumberStreamMedium.html",
+          "12findTheMedianOfANumberStreamMedium.html",
+          "13findTheMedianOfANumberStreamMedium.html",
+          "14findTheMedianOfANumberStreamMedium.html"
+        ]
+      },
+      "3SlidingWindowMedianHard": {
+        files: [
+          "11slidingWindowMedianHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12slidingWindowMedianHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13slidingWindowMedianHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14slidingWindowMedianHard.html"
+        ]
+      },
+      "4MaximizeCapitalHard": {
+        files: [
+          "11maximizeCapitalHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12maximizeCapitalHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13maximizeCapitalHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14maximizeCapitalHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "5ProblemChallenge1": {
+        files: [
+          "11problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "6SolutionReviewProblemChallenge1": {
+        files: [
+          "11solutionReviewProblemChallenge1.html",
+          "12solutionReviewProblemChallenge1.html",
+          "13solutionReviewProblemChallenge1.html",
+          "14solutionReviewProblemChallenge1.html"
+        ]
+      }
+    }
+  },
+  "11PatternSubsets": {
+    folders: {
+      "10ProblemChallenge2": {
+        files: [
+          "11problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "11SolutionReviewProblemChallenge2": {
+        files: [
+          "11solutionReviewProblemChallenge2.html",
+          "12solutionReviewProblemChallenge2.html",
+          "13solutionReviewProblemChallenge2.html",
+          "14solutionReviewProblemChallenge2.html"
+        ]
+      },
+      "12ProblemChallenge3": {
+        files: [
+          "11problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "13SolutionReviewProblemChallenge3": {
+        files: [
+          "11solutionReviewProblemChallenge3.html",
+          "12solutionReviewProblemChallenge3.html",
+          "13solutionReviewProblemChallenge3.html",
+          "14solutionReviewProblemChallenge3.html"
+        ]
+      },
+      "1Introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2SubsetsEasy": {
+        files: [
+          "11subsetsEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12subsetsEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13subsetsEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14subsetsEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "3SubsetsWithDuplicatesEasy": {
+        files: [
+          "11subsetsWithDuplicatesEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12subsetsWithDuplicatesEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13subsetsWithDuplicatesEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14subsetsWithDuplicatesEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "4PermutationsMedium": {
+        files: [
+          "11permutationsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12permutationsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13permutationsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14permutationsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "5StringPermutationsByChangingCaseMedium": {
+        files: [
+          "11stringPermutationsByChangingCaseMedium.html",
+          "12stringPermutationsByChangingCaseMedium.html",
+          "13stringPermutationsByChangingCaseMedium.html",
+          "14stringPermutationsByChangingCaseMedium.html"
+        ]
+      },
+      "6BalancedParenthesesHard": {
+        files: [
+          "11balancedParenthesesHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12balancedParenthesesHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13balancedParenthesesHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14balancedParenthesesHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "7UniqueGeneralizedAbbreviationsHard": {
+        files: [
+          "111uniqueGeneralizedAbbreviationsHard.html",
+          "112uniqueGeneralizedAbbreviationsHard.html",
+          "12uniqueGeneralizedAbbreviationsHard.html",
+          "13uniqueGeneralizedAbbreviationsHard.html",
+          "14uniqueGeneralizedAbbreviationsHard.html"
+        ]
+      },
+      "8ProblemChallenge1": {
+        files: [
+          "11problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "9SolutionReviewProblemChallenge1": {
+        files: [
+          "11solutionReviewProblemChallenge1.html",
+          "12solutionReviewProblemChallenge1.html",
+          "13solutionReviewProblemChallenge1.html",
+          "14solutionReviewProblemChallenge1.html"
+        ]
+      }
+    }
+  },
+  "12PatternModifiedBinarySearch": {
+    folders: {
+      "10SolutionReviewProblemChallenge1": {
+        files: [
+          "11solutionReviewProblemChallenge1.html",
+          "12solutionReviewProblemChallenge1.html",
+          "13solutionReviewProblemChallenge1.html",
+          "14solutionReviewProblemChallenge1.html"
+        ]
+      },
+      "11ProblemChallenge2": {
+        files: [
+          "11problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "12SolutionReviewProblemChallenge2": {
+        files: [
+          "11solutionReviewProblemChallenge2.html",
+          "12solutionReviewProblemChallenge2.html",
+          "13solutionReviewProblemChallenge2.html",
+          "14solutionReviewProblemChallenge2.html"
+        ]
+      },
+      "13ProblemChallenge3": {
+        files: [
+          "11problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "14SolutionReviewProblemChallenge3": {
+        files: [
+          "11solutionReviewProblemChallenge3.html",
+          "12solutionReviewProblemChallenge3.html",
+          "13solutionReviewProblemChallenge3.html",
+          "14solutionReviewProblemChallenge3.html"
+        ]
+      },
+      "1Introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2OrderAgnosticBinarySearchEasy": {
+        files: [
+          "11orderAgnosticBinarySearchEasy.html",
+          "12orderAgnosticBinarySearchEasy.html",
+          "13orderAgnosticBinarySearchEasy.html",
+          "14orderAgnosticBinarySearchEasy.html"
+        ]
+      },
+      "3CeilingOfANumberMedium": {
+        files: [
+          "11ceilingOfANumberMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12ceilingOfANumberMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13ceilingOfANumberMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14ceilingOfANumberMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "4NextLetterMedium": {
+        files: [
+          "11nextLetterMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12nextLetterMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13nextLetterMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14nextLetterMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "5NumberRangeMedium": {
+        files: [
+          "11numberRangeMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12numberRangeMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13numberRangeMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14numberRangeMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "6SearchInASortedInfiniteArrayMedium": {
+        files: [
+          "11searchInASortedInfiniteArrayMedium.html",
+          "12searchInASortedInfiniteArrayMedium.html",
+          "13searchInASortedInfiniteArrayMedium.html",
+          "14searchInASortedInfiniteArrayMedium.html"
+        ]
+      },
+      "7MinimumDifferenceElementMedium": {
+        files: [
+          "11minimumDifferenceElementMedium.html",
+          "12minimumDifferenceElementMedium.html",
+          "13minimumDifferenceElementMedium.html",
+          "14minimumDifferenceElementMedium.html"
+        ]
+      },
+      "8BitonicArrayMaximumEasy": {
+        files: [
+          "11bitonicArrayMaximumEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12bitonicArrayMaximumEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13bitonicArrayMaximumEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14bitonicArrayMaximumEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "9ProblemChallenge1": {
+        files: [
+          "11problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      }
+    }
+  },
+  "13PatternBitwiseXor": {
+    folders: {
+      "1Introduction": {
+        files: [
+          "11introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2SingleNumberEasy": {
+        files: [
+          "11singleNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12singleNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13singleNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14singleNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "3TwoSingleNumbersMedium": {
+        files: [
+          "11twoSingleNumbersMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12twoSingleNumbersMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13twoSingleNumbersMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14twoSingleNumbersMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "4ComplementOfBase10NumberMedium": {
+        files: [
+          "11complementOfBase10NumberMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12complementOfBase10NumberMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13complementOfBase10NumberMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14complementOfBase10NumberMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "5ProblemChallenge1": {
+        files: [
+          "11problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "6SolutionReviewProblemChallenge1": {
+        files: [
+          "11solutionReviewProblemChallenge1.html",
+          "12solutionReviewProblemChallenge1.html",
+          "13solutionReviewProblemChallenge1.html",
+          "14solutionReviewProblemChallenge1.html"
+        ]
+      }
+    }
+  },
+  "14PatternTopKElements": {
+    folders: {
+      "10MaximumDistinctElementsMedium": {
+        files: [
+          "111maximumDistinctElementsMedium.html",
+          "112maximumDistinctElementsMedium.html",
+          "12maximumDistinctElementsMedium.html",
+          "13maximumDistinctElementsMedium.html",
+          "14maximumDistinctElementsMedium.html"
+        ]
+      },
+      "11SumOfElementsMedium": {
+        files: [
+          "11sumOfElementsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12sumOfElementsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13sumOfElementsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14sumOfElementsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "12RearrangeStringHard": {
+        files: [
+          "11rearrangeStringHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12rearrangeStringHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13rearrangeStringHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14rearrangeStringHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "13ProblemChallenge1": {
+        files: [
+          "11problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "14SolutionReviewProblemChallenge1": {
+        files: [
+          "11solutionReviewProblemChallenge1.html",
+          "12solutionReviewProblemChallenge1.html",
+          "13solutionReviewProblemChallenge1.html",
+          "14solutionReviewProblemChallenge1.html"
+        ]
+      },
+      "15ProblemChallenge2": {
+        files: [
+          "11problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "16SolutionReviewProblemChallenge2": {
+        files: [
+          "11solutionReviewProblemChallenge2.html",
+          "12solutionReviewProblemChallenge2.html",
+          "13solutionReviewProblemChallenge2.html",
+          "14solutionReviewProblemChallenge2.html"
+        ]
+      },
+      "17ProblemChallenge3": {
+        files: [
+          "11problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "18SolutionReviewProblemChallenge3": {
+        files: [
+          "11solutionReviewProblemChallenge3.html",
+          "12solutionReviewProblemChallenge3.html",
+          "13solutionReviewProblemChallenge3.html",
+          "14solutionReviewProblemChallenge3.html"
+        ]
+      },
+      "1Introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2TopKNumbersEasy": {
+        files: [
+          "11topKNumbersEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12topKNumbersEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13topKNumbersEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14topKNumbersEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "3KthSmallestNumberEasy": {
+        files: [
+          "11kthSmallestNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12kthSmallestNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13kthSmallestNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14kthSmallestNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "4KClosestPointsToTheOriginEasy": {
+        files: [
+          "11KClosestPointsToTheOriginEasy.html",
+          "12KClosestPointsToTheOriginEasy.html",
+          "13KClosestPointsToTheOriginEasy.html",
+          "14KClosestPointsToTheOriginEasy.html"
+        ]
+      },
+      "5ConnectRopesEasy": {
+        files: [
+          "11connectRopesEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12connectRopesEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13connectRopesEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14connectRopesEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "6TopKFrequentNumbersMedium": {
+        files: [
+          "11topKFrequentNumbersMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12topKFrequentNumbersMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13topKFrequentNumbersMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14topKFrequentNumbersMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "7FrequencySortMedium": {
+        files: [
+          "11frequencySortMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12frequencySortMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13frequencySortMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14frequencySortMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "8KthLargestNumberInAStreamMedium": {
+        files: [
+          "11kthLargestNumberInAStreamMedium.html",
+          "12kthLargestNumberInAStreamMedium.html",
+          "13kthLargestNumberInAStreamMedium.html",
+          "14kthLargestNumberInAStreamMedium.html"
+        ]
+      },
+      "9KClosestNumbersMedium": {
+        files: [
+          "11KClosestNumbersMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12KClosestNumbersMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13KClosestNumbersMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14KClosestNumbersMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      }
+    }
+  },
+  "15PatternKWayMerge": {
+    folders: {
+      "1Introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2MergeKSortedListsMedium": {
+        files: [
+          "11mergeKSortedListsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12mergeKSortedListsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13mergeKSortedListsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14mergeKSortedListsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "3KthSmallestNumberInMSortedListsMedium": {
+        files: [
+          "11kthSmallestNumberInMSortedListsMedium.html",
+          "12kthSmallestNumberInMSortedListsMedium.html",
+          "13kthSmallestNumberInMSortedListsMedium.html",
+          "14kthSmallestNumberInMSortedListsMedium.html"
+        ]
+      },
+      "4KthSmallestNumberInASortedMatrixHard": {
+        files: [
+          "111kthSmallestNumberInASortedMatrixHard.html",
+          "112kthSmallestNumberInASortedMatrixHard.html",
+          "12kthSmallestNumberInASortedMatrixHard.html",
+          "13kthSmallestNumberInASortedMatrixHard.html",
+          "14kthSmallestNumberInASortedMatrixHard.html"
+        ]
+      },
+      "5SmallestNumberRangeHard": {
+        files: [
+          "11smallestNumberRangeHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12smallestNumberRangeHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13smallestNumberRangeHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14smallestNumberRangeHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "6ProblemChallenge1": {
+        files: [
+          "11problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "7SolutionReviewProblemChallenge1": {
+        files: [
+          "11solutionReviewProblemChallenge1.html",
+          "12solutionReviewProblemChallenge1.html",
+          "13solutionReviewProblemChallenge1.html",
+          "14solutionReviewProblemChallenge1.html"
+        ]
+      }
+    }
+  },
+  "16Pattern0Or1KnapsackDynamicProgramming": {
+    folders: {
+      "1Introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "201KnapsackMedium": {
+        files: [
+          "101KnapsackMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "201KnapsackMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "301KnapsackMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "401KnapsackMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "3EqualSubsetSumPartitionMedium": {
+        files: [
+          "11EqualSubsetSumPartitionMedium.html",
+          "12EqualSubsetSumPartitionMedium.html",
+          "13EqualSubsetSumPartitionMedium.html",
+          "14EqualSubsetSumPartitionMedium.html"
+        ]
+      },
+      "4SubsetSumMedium": {
+        files: [
+          "11subsetSumMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12subsetSumMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13subsetSumMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14subsetSumMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "5MinimumSubsetSumDifferenceHard": {
+        files: [
+          "11minimumSubsetSumDifferenceHard.html",
+          "12minimumSubsetSumDifferenceHard.html",
+          "13minimumSubsetSumDifferenceHard.html",
+          "14minimumSubsetSumDifferenceHard.html"
+        ]
+      },
+      "6ProblemChallenge1": {
+        files: [
+          "11problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "7SolutionReviewProblemChallenge1": {
+        files: [
+          "11solutionReviewProblemChallenge1.html",
+          "12solutionReviewProblemChallenge1.html",
+          "13solutionReviewProblemChallenge1.html",
+          "14solutionReviewProblemChallenge1.html"
+        ]
+      },
+      "8ProblemChallenge2": {
+        files: [
+          "11problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "9SolutionReviewProblemChallenge2": {
+        files: [
+          "11SolutionReviewProblemChallenge2.html",
+          "12solutionReviewProblemChallenge2.html",
+          "13solutionReviewProblemChallenge2.html",
+          "14solutionReviewProblemChallenge2.html"
+        ]
+      }
+    }
+  },
+  "17PatternTopologicalSortGraph": {
+    folders: {
+      "10SolutionReviewProblemChallenge2": {
+        files: [
+          "11solutionReviewProblemChallenge2.html",
+          "12solutionReviewProblemChallenge2.html",
+          "13solutionReviewProblemChallenge2.html",
+          "14solutionReviewProblemChallenge2.html"
+        ]
+      },
+      "1Introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2TopologicalSortMedium": {
+        files: [
+          "11topologicalSortMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12topologicalSortMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13topologicalSortMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14topologicalSortMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "3TasksSchedulingMedium": {
+        files: [
+          "111tasksSchedulingMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "112tasksSchedulingMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12tasksSchedulingMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13tasksSchedulingMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14tasksSchedulingMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "4TasksSchedulingOrderMedium": {
+        files: [
+          "111tasksSchedulingOrderMedium.html",
+          "112tasksSchedulingOrderMedium.html",
+          "12tasksSchedulingOrderMedium.html",
+          "13tasksSchedulingOrderMedium.html",
+          "14tasksSchedulingOrderMedium.html"
+        ]
+      },
+      "5AllTasksSchedulingOrdersHard": {
+        files: [
+          "111allTasksSchedulingOrdersHard.html",
+          "112allTasksSchedulingOrdersHard.html",
+          "12allTasksSchedulingOrdersHard.html",
+          "13allTasksSchedulingOrdersHard.html",
+          "14allTasksSchedulingOrdersHard.html"
+        ]
+      },
+      "6AlienDictionaryHard": {
+        files: [
+          "111alienDictionaryHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "112alienDictionaryHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12alienDictionaryHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13alienDictionaryHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14alienDictionaryHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "7ProblemChallenge1": {
+        files: [
+          "11problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "8SolutionReviewProblemChallenge1": {
+        files: [
+          "11solutionReviewProblemChallenge1.html",
+          "12solutionReviewProblemChallenge1.html",
+          "13solutionReviewProblemChallenge1.html",
+          "14solutionReviewProblemChallenge1.html"
+        ]
+      },
+      "9ProblemChallenge2": {
+        files: [
+          "11problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      }
+    }
+  },
+  "18Miscellaneous": {
+    folders: {
+      "1KthSmallestNumberHard": {
+        files: [
+          "11kthSmallestNumberHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12kthSmallestNumberHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13kthSmallestNumberHard.html",
+          "14kthSmallestNumberHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "15kthSmallestNumberHardGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      }
+    }
+  },
+  "19Conclusions": {
+    files: [
+      "whereToGoFromHereGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+    ]
+  },
+  "1Introduction": {
+    files: [
+      "1WhoShouldTakeThisCourse.html",
+      "2CourseOverviewGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+    ]
+  },
+  "2PatternSlidingWindow": {
+    folders: {
+      "10SolutionReviewProblemChallenge1": {
+        files: [
+          "11SolutionReviewProblemChallenge1.html",
+          "12SolutionReviewProblemChallenge1.html",
+          "13SolutionReviewProblemChallenge1.html",
+          "14SolutionReviewProblemChallenge1.html"
+        ]
+      },
+      "11ProblemChallenge2": {
+        files: [
+          "11ProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12ProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13ProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14ProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "12SolutionReviewProblemChallenge2": {
+        files: [
+          "11SolutionReviewProblemChallenge2.html",
+          "12SolutionReviewProblemChallenge2.html",
+          "13SolutionReviewProblemChallenge2.html",
+          "14SolutionReviewProblemChallenge2.html"
+        ]
+      },
+      "13ProblemChallenge3": {
+        files: [
+          "11ProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12ProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13ProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14ProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "14SolutionReviewProblemChallenge3": {
+        files: [
+          "11SolutionReviewProblemChallenge3.html",
+          "12SolutionReviewProblemChallenge3.html",
+          "13SolutionReviewProblemChallenge3.html",
+          "14SolutionReviewProblemChallenge3.html"
+        ]
+      },
+      "15ProblemChallenge4": {
+        files: [
+          "11ProblemChallenge4GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12ProblemChallenge4GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13ProblemChallenge4GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14ProblemChallenge4GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "16SolutionReviewProblemChallenge4": {
+        files: [
+          "11SolutionReviewProblemChallenge4.html",
+          "12SolutionReviewProblemChallenge4.html",
+          "13SolutionReviewProblemChallenge4.html",
+          "14SolutionReviewProblemChallenge4.html"
+        ]
+      },
+      "1Introduction": {
+        files: [
+          "11IntroductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12IntroductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13IntroductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14IntroductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2MaximumSumSubarrayOfSizeKEasy": {
+        files: [
+          "11MaximumSumSubarrayOfSizeKEasy.html",
+          "12MaximumSumSubarrayOfSizeKEasy.html",
+          "13MaximumSumSubarrayOfSizeKEasy.html",
+          "14MaximumSumSubarrayOfSizeKEasy.html"
+        ]
+      },
+      "3SmallestSubarrayWithAGivenSumEasy": {
+        files: [
+          "11SmallestSubarrayWithAGivenSumEasy.html",
+          "12SmallestSubarrayWithAGivenSumEasy.html",
+          "13SmallestSubarrayWithAGivenSumEasy.html",
+          "14SmallestSubarrayWithAGivenSumEasy.html"
+        ]
+      },
+      "4LongestSubstringWithKDistinctCharactersMedium": {
+        files: [
+          "11LongestSubstringWithKDistinctCharactersMedium.html",
+          "12LongestSubstringWithKDistinctCharactersMedium.html",
+          "13LongestSubstringWithKDistinctCharactersMedium.html",
+          "14LongestSubstringWithKDistinctCharactersMedium.html"
+        ]
+      },
+      "5FruitsIntoBasketsMedium": {
+        files: [
+          "11FruitsIntoBasketsMedium.html",
+          "12FruitsIntoBasketsMedium.html",
+          "13FruitsIntoBasketsMedium.html",
+          "14FruitsIntoBasketsMedium.html"
+        ]
+      },
+      "6NoRepeatSubstringHard": {
+        files: [
+          "11NoRepeatSubstringHard.html",
+          "12NoRepeatSubstringHard.html",
+          "13NoRepeatSubstringHard.html",
+          "14NoRepeatSubstringHard.html"
+        ]
+      },
+      "7LongestSubstringWithSameLettersAfterReplacementHard": {
+        files: [
+          "11LongestSubstringWithLettersAfterReplacementHard.html",
+          "12LongestSubstringWithSameLettersAfterReplacementHard.html",
+          "13LongestSubstringWithSameLettersAfterReplacementHard.html",
+          "14LongestSubstringWithSameLettersAfterReplacementHard.html"
+        ]
+      },
+      "8LongestSubarrayWithOnesAfterReplacementHard": {
+        files: [
+          "11LongestSubarrayWithOnesAfterReplacementHard.html",
+          "12LongestSubarrayWithOnesAfterReplacementHard.html",
+          "13LongestSubarrayWithOnesAfterReplacementHard.html",
+          "14LongestSubarrayWithOnesAfterReplacementHard.html"
+        ]
+      },
+      "9ProblemChallenge1": {
+        files: [
+          "11ProblemChallenge1.html",
+          "12ProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13ProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14ProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      }
+    }
+  },
+  "3PatternTwoPointers": {
+    folders: {
+      "10ProblemChallenge1": {
+        files: [
+          "11ProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12ProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13ProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14ProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "11SolutionReviewProblemChallenge1": {
+        files: [
+          "112SolutionReviewProblemChallenge1.html",
+          "11SolutionReviewProblemChallenge1.html",
+          "12SolutionReviewProblemChallenge1.html",
+          "13SolutionReviewProblemChallenge1.html",
+          "14SolutionReviewProblemChallenge1.html"
+        ]
+      },
+      "12ProblemChallenge2": {
+        files: [
+          "11ProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12ProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13ProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14ProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "13SolutionReviewProblemChallenge2": {
+        files: [
+          "11SolutionReviewProblemChallenge2.html",
+          "12SolutionReviewProblemChallenge2.html",
+          "13SolutionReviewProblemChallenge2.html",
+          "14SolutionReviewProblemChallenge2.html"
+        ]
+      },
+      "14ProblemChallenge3": {
+        files: [
+          "11ProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12ProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13ProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14ProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "15SolutionReviewProblemChallenge3": {
+        files: [
+          "11SolutionReviewProblemChallenge3.html",
+          "12SolutionReviewProblemChallenge3.html",
+          "13SolutionReviewProblemChallenge3.html",
+          "14SolutionReviewProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "1Introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2PairWithTargetSumEasy": {
+        files: [
+          "11PairWithTargetSumEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12PairWithTargetSumEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13PairWithTargetSumEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14PairWithTargetSumEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "3RemoveDuplicatesEasy": {
+        files: [
+          "11RemoveDuplicatesEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12RemoveDuplicatesEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13RemoveDuplicatesEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14RemoveDuplicatesEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "4SquaringASortedArrayEasy": {
+        files: [
+          "11SquaringASortedArrayEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12SquaringASortedArrayEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13SquaringASortedArrayEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14SquaringASortedArrayEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "5TripletSumToZeroMedium": {
+        files: [
+          "11TripletSumToZeroMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12TripletSumToZeroMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13TripletSumToZeroMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14TripletSumToZeroMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "6TripletSumCloseToTargetMedium": {
+        files: [
+          "11TripletSumCloseToTargetMedium.html",
+          "121TripletSumCloseToTargetMedium.html",
+          "12TripletSumCloseToTargetMedium.html",
+          "13TripletSumCloseToTargetMedium.html",
+          "14TripletSumCloseToTargetMedium.html"
+        ]
+      },
+      "7TripletsWithSmallerSumMedium": {
+        files: [
+          "11TripletsWithSmallerSumMedium.html",
+          "12TripletsWithSmallerSumMedium.html",
+          "13TripletsWithSmallerSumMedium.html",
+          "14TripletsWithSmallerSumMedium.html"
+        ]
+      },
+      "8SubarraysWithProductLessThanATargetMedium": {
+        files: [
+          "11SubarraysWithProductLessThanATargetMedium.html",
+          "12SubarraysWithProductLessThanATargetMedium.html",
+          "13SubarraysWithProductLessThanATargetMedium.html",
+          "14SubarraysWithProductLessThanATargetMedium.html"
+        ]
+      },
+      "9DutchNationalFlagProblemMedium": {
+        files: [
+          "11DutchNationalFlagProblemMedium.html",
+          "12DutchNationalFlagProblemMedium.html",
+          "13DutchNationalFlagProblemMedium.html",
+          "14DutchNationalFlagProblemMedium.html"
+        ]
+      }
+    }
+  },
+  "4PatternFastSlowPointers": {
+    folders: {
+      "10ProblemChallenge3": {
+        files: [
+          "11ProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "11SolutionReviewProblemChallenge3": {
+        files: [
+          "11solutionReviewProblemChallenge3.html",
+          "12solutionReviewProblemChallenge3.html",
+          "13solutionReviewProblemChallenge3.html",
+          "14solutionReviewProblemChallenge3.html"
+        ]
+      },
+      "1introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2LinkedlistCycleEasy": {
+        files: [
+          "11LinkedlistCycleEasy.html",
+          "12LinkedlistCycleEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13LinkedlistCycleEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14LinkedlistCycleEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "3StartOfLinkedlistCycleMedium": {
+        files: [
+          "11StartOfLinkedlistCycleMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12StartOfLinkedlistCycleMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13StartOfLinkedlistCycleMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14StartOfLinkedlistCycleMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "4HappyNumberMedium": {
+        files: [
+          "11HappyNumberMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12HappyNumberMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13HappyNumberMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14HappyNumberMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "5MiddleOfTheLinkedlistEasy": {
+        files: [
+          "11MiddleOfTheLinkedlistEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12MiddleOfTheLinkedlistEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13MiddleOfTheLinkedlistEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14MiddleOfTheLinkedlistEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "6ProblemChallenge1": {
+        files: [
+          "11ProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12ProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13ProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14ProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "7SolutionReviewProblemChallenge1": {
+        files: [
+          "11SolutionReviewProblemChallenge1.html",
+          "12SolutionReviewProblemChallenge1.html",
+          "13SolutionReviewProblemChallenge1.html",
+          "14SolutionReviewProblemChallenge1.html"
+        ]
+      },
+      "8ProblemChallenge2": {
+        files: [
+          "11ProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12ProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13ProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14ProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "9SolutionReviewProblemChallenge2": {
+        files: [
+          "11SolutionReviewProblemChallenge2.html",
+          "12SolutionReviewProblemChallenge2.html",
+          "13SolutionReviewProblemChallenge2.html",
+          "14SolutionReviewProblemChallenge2.html"
+        ]
+      }
+    }
+  },
+  "5PatternMergeIntervals": {
+    folders: {
+      "10ProblemChallenge3": {
+        files: [
+          "11problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "11SolutionReviewProblemChallenge3": {
+        files: [
+          "111solutionReviewProblemChallenge3.html",
+          "112solutionReviewProblemChallenge3.html",
+          "121solutionReviewProblemChallenge3.html",
+          "122solutionReviewProblemChallenge3.html",
+          "13solutionReviewProblemChallenge3.html",
+          "14solutionReviewProblemChallenge3.html"
+        ]
+      },
+      "1Introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2MergeIntervalsMedium": {
+        files: [
+          "11mergeIntervalsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12mergeIntervalsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13mergeIntervalsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14mergeIntervalsMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "3InsertIntervalMedium": {
+        files: [
+          "11insertIntervalMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12insertIntervalMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13insertIntervalMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14insertIntervalMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "4IntervalsIntersectionMedium": {
+        files: [
+          "11intervalsIntersectionMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12intervalsIntersectionMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "131IntervalsIntersectionMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "132IntervalsIntersectionMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14intervalsIntersectionMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "5ConflictingAppointmentsMedium": {
+        files: [
+          "11conflictingAppointmentsMedium.html",
+          "12conflictingAppointmentsMedium.html",
+          "13conflictingAppointmentsMedium.html",
+          "14conflictingAppointmentsMedium.html"
+        ]
+      },
+      "6ProblemChallenge1": {
+        files: [
+          "11problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "7SolutionReviewProblemChallenge1": {
+        files: [
+          "11solutionReviewProblemChallenge1.html",
+          "12solutionReviewProblemChallenge1.html",
+          "13solutionReviewProblemChallenge1.html",
+          "14solutionReviewProblemChallenge1.html"
+        ]
+      },
+      "8ProblemChallenge2": {
+        files: [
+          "11problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "9SolutionReviewProblemChallenge2": {
+        files: [
+          "11solutionReviewProblemChallenge2.html",
+          "12solutionReviewProblemChallenge2.html",
+          "13solutionReviewProblemChallenge2.html",
+          "14solutionReviewProblemChallenge2.html"
+        ]
+      }
+    }
+  },
+  "6PatternCyclicSort": {
+    folders: {
+      "10SolutionReviewProblemChallenge2": {
+        files: [
+          "11solutionReviewProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12solutionReviewProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13solutionReviewProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14solutionReviewProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "11ProblemChallenge3": {
+        files: [
+          "11problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "12SolutionReviewProblemChallenge3": {
+        files: [
+          "11solutionReviewProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12solutionReviewProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13solutionReviewProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14solutionReviewProblemChallenge3GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "1Introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2CyclicSortEasy": {
+        files: [
+          "11CyclicSortEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12cyclicSortEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13cyclicSortEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14cyclicSortEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "3FindTheMissingNumberEasy": {
+        files: [
+          "11findTheMissingNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12findTheMissingNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13findTheMissingNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14findTheMissingNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "4FindAllMissingNumbersEasy": {
+        files: [
+          "11findAllMissingNumbersEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12findAllMissingNumbersEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13findAllMissingNumbersEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14findAllMissingNumbersEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "5FindTheDuplicateNumberEasy": {
+        files: [
+          "11findTheDuplicateNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12findTheDuplicateNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13findTheDuplicateNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14findTheDuplicateNumberEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "6FindAllDuplicateNumbersEasy": {
+        files: [
+          "11findAllDuplicateNumbersEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12findAllDuplicateNumbersEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13findAllDuplicateNumbersEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14findAllDuplicateNumbersEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "7ProblemChallenge1": {
+        files: [
+          "11problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "8SolutionReviewProblemChallenge1": {
+        files: [
+          "11solutionReviewProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12solutionReviewProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13solutionReviewProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14solutionReviewProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "9ProblemChallenge2": {
+        files: [
+          "11problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      }
+    }
+  },
+  "7PatternInPlaceReversalOfALinkedlist": {
+    folders: {
+      "1Introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2ReverseALinkedlistEasy": {
+        files: [
+          "11reverseALinkedlistEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12reverseALinkedlistEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13reverseALinkedlistEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14reverseALinkedlistEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "3ReverseASubListMedium": {
+        files: [
+          "11reverseASubListMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12reverseASubListMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13reverseASubListMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14reverseASubListMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "4ReverseEveryKElementSubListMedium": {
+        files: [
+          "11ReverseEveryKElementSubListMedium.html",
+          "12ReverseEveryKElementSubListMedium.html",
+          "13ReverseEveryKElementSubListMedium.html",
+          "14ReverseEveryKElementSubListMedium.html"
+        ]
+      },
+      "5ProblemChallenge1": {
+        files: [
+          "11problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14ProblemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "6SolutionReviewProblemChallenge1": {
+        files: [
+          "11solutionReviewProblemChallenge1.html",
+          "12solutionReviewProblemChallenge1.html",
+          "13SolutionReviewProblemChallenge1.html",
+          "14SolutionReviewProblemChallenge1.html"
+        ]
+      },
+      "7ProblemChallenge2": {
+        files: [
+          "11ProblemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "8SolutionReviewProblemChallenge2": {
+        files: [
+          "11solutionReviewProblemChallenge2.html",
+          "12solutionReviewProblemChallenge2.html",
+          "13solutionReviewProblemChallenge2.html",
+          "14solutionReviewProblemChallenge2.html"
+        ]
+      }
+    }
+  },
+  "8PatternTreeBreadthFirstSearch": {
+    folders: {
+      "10SolutionReviewProblemChallenge1": {
+        files: [
+          "11solutionReviewProblemChallenge1.html",
+          "12solutionReviewProblemChallenge1.html",
+          "13solutionReviewProblemChallenge1.html",
+          "14solutionReviewProblemChallenge1.html"
+        ]
+      },
+      "11ProblemChallenge2": {
+        files: [
+          "11problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "12SolutionReviewProblemChallenge2": {
+        files: [
+          "11solutionReviewProblemChallenge2.html",
+          "12solutionReviewProblemChallenge2.html",
+          "13solutionReviewProblemChallenge2.html",
+          "14solutionReviewProblemChallenge2.html"
+        ]
+      },
+      "1Introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2BinaryTreeLevelOrderTraversalEasy": {
+        files: [
+          "11binaryTreeLevelOrderTraversalEasy.html",
+          "12binaryTreeLevelOrderTraversalEasy.html",
+          "13binaryTreeLevelOrderTraversalEasy.html",
+          "14binaryTreeLevelOrderTraversalEasy.html"
+        ]
+      },
+      "3ReverseLevelOrderTraversalEasy": {
+        files: [
+          "11reverseLevelOrderTraversalEasy.html",
+          "12ReverseLevelOrderTraversalEasy.html",
+          "13reverseLevelOrderTraversalEasy.html",
+          "14reverseLevelOrderTraversalEasy.html"
+        ]
+      },
+      "4ZigzagTraversalMedium": {
+        files: [
+          "11zigzagTraversalMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12zigzagTraversalMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13zigzagTraversalMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14zigzagTraversalMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "5LevelAveragesInABinaryTreeEasy": {
+        files: [
+          "11levelAveragesInABinaryTreeEasy.html",
+          "12levelAveragesInABinaryTreeEasy.html",
+          "13levelAveragesInABinaryTreeEasy.html",
+          "14levelAveragesInABinaryTreeEasy.html"
+        ]
+      },
+      "6MinimumDepthOfABinaryTreeEasy": {
+        files: [
+          "11minimumDepthOfABinaryTreeEasy.html",
+          "12minimumDepthOfABinaryTreeEasy.html",
+          "13minimumDepthOfABinaryTreeEasy.html",
+          "14minimumDepthOfABinaryTreeEasy.html"
+        ]
+      },
+      "7LevelOrderSuccessorEasy": {
+        files: [
+          "11levelOrderSuccessorEasy.html",
+          "12levelOrderSuccessorEasy.html",
+          "13levelOrderSuccessorEasy.html",
+          "14levelOrderSuccessorEasy.html"
+        ]
+      },
+      "8ConnectLevelOrderSiblingsMedium": {
+        files: [
+          "11connectLevelOrderSiblingsMedium.html",
+          "12connectLevelOrderSiblingsMedium.html",
+          "13connectLevelOrderSiblingsMedium.html",
+          "14connectLevelOrderSiblingsMedium.html"
+        ]
+      },
+      "9ProblemChallenge1": {
+        files: [
+          "11problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      }
+    }
+  },
+  "9PatternTreeDepthFirstSearch": {
+    folders: {
+      "10SolutionReviewProblemChallenge2": {
+        files: [
+          "11solutionReviewProblemChallenge2.html",
+          "12solutionReviewProblemChallenge2.html",
+          "13solutionReviewProblemChallenge2.html",
+          "14solutionReviewProblemChallenge2.html"
+        ]
+      },
+      "1Introduction": {
+        files: [
+          "introductionGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "2BinaryTreePathSumEasy": {
+        files: [
+          "11binaryTreePathSumEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12binaryTreePathSumEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13binaryTreePathSumEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14binaryTreePathSumEasyGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "3AllPathsForASumMedium": {
+        files: [
+          "11allPathsForASumMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12allPathsForASumMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13allPathsForASumMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14allPathsForASumMediumGrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "4SumOfPathNumbersMedium": {
+        files: [
+          "11sumOfPathNumbersMedium.html",
+          "121sumOfPathNumbersMedium.html",
+          "122sumOfPathNumbersMedium.html",
+          "13sumOfPathNumbersMedium.html",
+          "14sumOfPathNumbersMedium.html"
+        ]
+      },
+      "5PathWithGivenSequenceMedium": {
+        files: [
+          "11pathWithGivenSequenceMedium.html",
+          "12pathWithGivenSequenceMedium.html",
+          "13pathWithGivenSequenceMedium.html",
+          "14pathWithGivenSequenceMedium.html"
+        ]
+      },
+      "6CountPathsForASumMedium": {
+        files: [
+          "11countPathsForASumMedium.html",
+          "12countPathsForASumMedium.html",
+          "13countPathsForASumMedium.html",
+          "14countPathsForASumMedium.html"
+        ]
+      },
+      "7ProblemChallenge1": {
+        files: [
+          "11problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge1GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      },
+      "8SolutionReviewProblemChallenge1": {
+        files: [
+          "11solutionReviewProblemChallenge1.html",
+          "12solutionReviewProblemChallenge1.html",
+          "13solutionReviewProblemChallenge1.html",
+          "14solutionReviewProblemChallenge1.html"
+        ]
+      },
+      "9ProblemChallenge2": {
+        files: [
+          "11problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "12problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "13problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html",
+          "14problemChallenge2GrokkingTheCodingInterviewPatternsForCodingQuestions.html"
+        ]
+      }
+    }
+  }
+}
+
+        let currentFile = null;
+
+        function buildFileTree(structure, container, parentPath = '') {
+            for (const [name, content] of Object.entries(structure)) {
+                const path = parentPath ? `${parentPath}/${name}` : name;
+                
+                if (content.folders || content.files) {
+                    // This is a folder
+                    const folderDiv = document.createElement('div');
+                    folderDiv.className = 'folder';
+                    
+                    const folderHeader = document.createElement('div');
+                    folderHeader.className = 'folder-header';
+                    folderHeader.innerHTML = `<span class="folder-icon">▶</span><span>${name}</span>`;
+                    
+                    const folderContent = document.createElement('div');
+                    folderContent.className = 'folder-content';
+                    
+                    folderHeader.onclick = () => {
+                        folderDiv.classList.toggle('open');
+                    };
+                    
+                    folderDiv.appendChild(folderHeader);
+                    folderDiv.appendChild(folderContent);
+                    container.appendChild(folderDiv);
+                    
+                    // Add subfolders
+                    if (content.folders) {
+                        buildFileTree(content.folders, folderContent, path);
+                    }
+                    
+                    // Add files
+                    if (content.files) {
+                        content.files.forEach(file => {
+                            const fileItem = document.createElement('div');
+                            fileItem.className = 'file-item';
+                            fileItem.innerHTML = `<span class="file-icon">📄</span><span>${file}</span>`;
+                            fileItem.onclick = () => loadFile(path, file, fileItem);
+                            folderContent.appendChild(fileItem);
+                        });
+                    }
+                }
+            }
+        }
+
+        async function loadFile(folderPath, fileName, element) {
+            // Remove active class from all files
+            document.querySelectorAll('.file-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Add active class to clicked file
+            element.classList.add('active');
+            
+            // Update header
+            document.getElementById('contentTitle').textContent = fileName;
+            document.getElementById('breadcrumb').textContent = folderPath;
+            
+            // Show loading
+            const contentBody = document.getElementById('contentBody');
+            contentBody.innerHTML = '<div class="loading">Loading...</div>';
+            
+            // Construct file path - ADJUST THIS to match your actual file structure
+            const filePath = `${folderPath}/${fileName}`;
+            
+            try {
+                // Fetch the HTML file
+                const response = await fetch(filePath);
+                
+                if (!response.ok) {
+                    throw new Error('File not found');
+                }
+                
+                const htmlContent = await response.text();
+                
+                // Create a wrapper and inject the HTML
+                contentBody.innerHTML = `<div class="content-wrapper">${htmlContent}</div>`;
+                
+                // Execute any scripts in the loaded HTML
+                const scripts = contentBody.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    newScript.textContent = script.textContent;
+                    document.body.appendChild(newScript);
+                });
+                
+            } catch (error) {
+                contentBody.innerHTML = `
+                    <div class="welcome-screen">
+                        <div>
+                            <h3>❌ Error Loading File</h3>
+                            <p>Could not load: ${filePath}</p>
+                            <p style="margin-top: 10px; font-size: 12px; color: #999;">
+                                Make sure the file path is correct and the file exists.
+                            </p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const fileItems = document.querySelectorAll('.file-item');
+            
+            fileItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                const folder = item.closest('.folder');
+                
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                    // Open parent folder
+                    if (folder) {
+                        folder.classList.add('open');
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Hide empty folders
+            document.querySelectorAll('.folder').forEach(folder => {
+                const visibleFiles = folder.querySelectorAll('.file-item[style="display: flex;"]');
+                if (searchTerm && visibleFiles.length === 0) {
+                    folder.style.display = 'none';
+                } else {
+                    folder.style.display = 'block';
+                }
+            });
+        });
+
+        // Initialize
+        const fileTree = document.getElementById('fileTree');
+        buildFileTree(fileStructure, fileTree);
+    </script>
+</body>
+</html>

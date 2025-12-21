@@ -1,0 +1,322 @@
+---
+title: Vim Cheatsheet
+date: 2025-11-14
+---
+
+---
+
+[Vim: Tutorial on Editing, Navigation, and File Management (2018)](https://www.youtube.com/watch?v=E-ZbrtoSuzw) 
+
+[How to Do 90% of What Plugins Do (With Just Vim)](https://www.youtube.com/watch?v=XA2WjJbmmoM) 
+
+## 1. Motions
+
+### i. Scrolling
+
+![[vim_scrolling.png]]
+
+- `zz` - Center the screen on the current line
+
+### i. My motions
+- `^D` This will delte the whole line
+- `viwc()` → `Esc` → `P`- Wrap word in ()
+- `f[ci[` - Jump to `[`, change inside brackets eg: [1,2,3,4]
+- `*` - highlights all occurences of word under cursor. can delete them or whatever
+  - Quick Variable Renaming (in function):
+    -  `*` -> `cgn` change to new word -> `. . .` change everywhere
+- `vector<int> nums = {1,2,3};` → cursor on `{` → `di{` → `{}`    
+- `f}i`, value - Jump to `}`, will insert inside `}` at the end
+- `f"ci"`- Jump to next quote, change inside quotes, same for `'`, `<` eg `vector<int>`
+>
+Multi character operations
+- `ct,` - Change till comma (useful in argument lists)
+- `dt)` - Delete till closing paren (keep the paren)
+- `c2w` - Change next 2 words
+- `d3w` - Delete next 3 words
+>
+Line manipulation combos
+- `_D`  - Delete from first word to end (skip whitespace)
+- `_C`  - Change from first word to end
+-  `ce` - Delete the word in front and put cursor in insert mode
+>
+Quick insertions
+- `a`  - powerful when combined with other commands, keeps you in flow.
+  - `f;a` - Jump to `;` append after it (add code after statement)
+- `f{a<CR>` - Jump to `{`, add newline after (start function body)
+>
+Smart Word Operations
+- `ciW` - Change inside WORD (includes punctuation, like `vector<int>`). very help, i kept doing `dw`
+- `daW` - Delete around WORD (includes punctuation)
+>
+Arrays and Vectors
+- `f[%` - Jump to `[`, then to matching `]`
+- `f[di[` - Jump to `[`, delete array contents
+- `va[` - Select array INCLUDING brackets [1,2,3]
+- `vi[` - Select array INSIDE brackets 1,2,3
+>
+Function Call Patterns
+`dap` - Delete around paragraph (whole function often) - quickly clear function
+  - kinda useful when you have to remove the whole block of text
+- `vip` - Select inside paragraph (function body)  
+>
+Copy-Paste Combos
+- `"ayiw` - Yank word to register `'a'`, then `"ap` to paste it anywhere
+>
+Multi-Line Selections
+`vi{` - Select everything inside current braces
+`va{` - Select braces AND everything inside
+`v%` - Visual select from current bracket to matching bracket
+`v}` - Select from cursor to end of paragraph/block
+`v{` - Select from cursor to start of paragraph/block
+
+### ii. Motions while in insert mode
+
+- `Ctrl + h` - also acts as backspace
+- `Ctrl + w` - delete previous word
+- `Ctrl + u` - delete from cursor to start of the line
+
+
+
+
+### ii. Delete
+-`diw` = delete inside word
+- `daw` = delete word (around word)
+- `ciw` = change inside word
+- `caw` = change word (around word)
+- `dd` = delete line
+- `ndd` = delete n lines
+- `D` = delete to end of line
+- `d`$ = delete to end of line
+- `c`$ = change to end of line
+- `dw` = delete to end of word
+- `db` = delete back one word
+- `x` = delete char
+- `X` = delete char before cursor
+- `ci`( = change inside (…)
+- `di`( = delete inside (…)
+- `diB` = delete inside { }
+- `daB` = delete { } and contents
+- `diB` = delete inside { }
+- `daB` = delete { } and everything inside
+- `dt;` = Delete till (not including) semicolon
+- `df;` = Delete till and including semicolon
+
+### ii. Copy Paste Replace
+- `ry` - Replace the character under the cursor with the next character `y`
+- `yy` - Copy (yank) the current line
+- `yyp` - Copy the current line and paste it below
+- `yyP` - Copy the current line and paste it above
+- `p` - Paste the copied text below the current line (or after the cursor for partial lines)
+- `P` - Paste the copied text above the current line (or at the cursor position)
+>
+- `yiw` - Copy (yank) the current word
+- `viwp` - Replace the current word with the previously copied text
+- `vi(` - selects everything inside the parenthesis
+
+
+>
+
+- `ggVG` + `"+y` - Copy the entire file to the system clipboard
+- `"+y` - Copy selection to the system clipboard
+
+- `^vg_` - Select all words in the line (excludes leading and trailing whitespace)
+- `_y$` - Copy everything in the line without leading whitespace
+>
+
+- `gv` - Reselect the last visual selection
+
+>
+
+- `u` - Undo the last command
+- `ctrl + r` - Redo the last undone command (cant make it work for some reason)
+- `U` - Undo all changes made on the current line `!!!!`
+
+
+### iii. Misc
+
+- `gg` - Go to the start of the file
+
+- `%` - Jump back and forth to the matching brace, bracket, or parenthesis
+- `J` - Join the current line with the line below `!!!!`
+- `f{char}` - Jump to the next occurrence of the specified character `!!!!`
+- `F{char}` - Jump befind to the specified character `eg F<Space>`
+- `~` - Toggle case (converts lowercase to uppercase and vice versa). keep pressing to move forward
+- `vit` - Select everything between HTML tags
+
+### iv. Using motions with context
+
+![[vim_motion.png]]
+
+- I need to delete a while loop and I am before the while loop. so i look at it and it ends with `}`, so i do `d}` it deletes everything till that
+- I am in the middle of the line. I need to delete 3 words in the middle. so i go before it and do `3ce`, this changes the 3 words forward
+- I am on line 8, and i need to go 8 lines down relative to current line. I do `8+`. This takes me to the end of 8th line
+- capatilize a word. `gUaW`. go upper case one word
+- I have 4 lines below me. I want to go to the end of 4rth line. so i do `4$`. This takes me to the end of the line 4 times.
+- I have 2 for loops above me and one while loop below me. To go to start of first for loop above me i do, `[m`. If i want to go the below while loop i do `]m`. Here m is method and should work, need to look how.
+
+
+- if my cursor is after the comma and i want to delete till the closing brackets. I would do `dt)`. 
+This means delete upto the delimeter ) 
+``` cpp
+
+    ListNode* reverseList(ListNode* head, ListNode* endingNode){
+        // does something
+    }
+
+```
+
+
+### v. Basics
+
+
+
+- `j` - Move down one line
+- `k` - Move up one line
+- `l` - Move right one character
+- `h` - Move left one character
+>
+- `w` - Jump forward to the beginning of the next word
+- `b` - Jump backward to the beginning of the previous word
+- `e` - Move to the end of the current word
+>
+- `G` - Go to the end of the file
+- `0` - Move to the start of the line
+>
+- `_` - Move to the start of the first word in the line (skip leading whitespace)
+- `^` - Move to the first non-whitespace character in the line
+- `$` - Move to the end of the line
+>
+- `v` - Start visual mode (character-wise selection)
+- `V` - Start visual line mode (select entire lines)
+>
+- `vi(` - Select everything inside parentheses
+- `vi"` or `vi'` - Select everything inside quotes
+>
+- `>` or `2>` - Indent the selected text (move 1 or 2 tabs forward)
+- `<` or `2<` - Unindent the selected text (move 1 or 2 tabs backward)
+
+>
+
+- `I` - Move to the first non-whitespace character and enter insert mode
+- `A` - Move to the end of the line and enter insert mode
+- `o` - Open a new line below the current line and enter insert mode
+- `O` - Open a new line above the current line and enter insert mode
+
+>
+
+
+
+
+### vi. Regular Expressions
+
+- `/err.*` - Search for everything containing "err" followed by any characters
+- `:s/error/taimour` - Replace the first occurrence of "error" with "taimour" in the current line
+- `:%s/foo/taimour` - Replace the first occurrence of "foo" with "taimour" on every line in the file
+- `:s/foo/taimour/g` - Replace all occurrences of "foo" with "taimour" in the current line
+- `:%s/foo/taimour/g` - Replace all occurrences of "foo" with "taimour" in the entire file
+- `:s/foo/taimour/gc` - Replace all occurrences in the current line with confirmation prompts (press `y` for yes, `n` for no)
+
+
+
+### vii File Handling
+
+- go on import command and press `gf`, it will take you to that file.
+- `gd` will take you to the defination where it was deined
+>
+- `ctrl + w` - Enter window mode for managing multiple splits
+- `ctrl + ^` - Switch to the previously opened file
+- `ctrl + o` - Jump backward through the jumplist (files/directories history)
+- `ctrl + i` - Jump forward through the jumplist
+- `ctrl + G` - Display information about the current file
+
+>
+
+- `:source %` - Source the current file (useful for reloading configuration files like `init.vim`)
+- `:e {filename}` - Open or create a new file
+- `:jumplist` - Display the list of recent file jumps
+
+
+### viii. Marks & Bookmarks
+
+- `m{A-Z}` (e.g., `mA`) - Create a global bookmark that can be accessed from anywhere in the directory
+- `m{a-z}` (e.g., `ma`) - Create a local bookmark accessible only within the same file
+- `'{mark}` (e.g., `'a`) - Jump to the bookmarked line
+
+### ix. Tips
+
+- `d`, `c`, and `y` can be combined with any motion command
+- Most commands accept a count prefix like `3w`. Experiment with this. `TODO`
+- use motions as often as possible
+- Commands like `ciw` (change inner word), `di"` (delete inside quotes), and `ca{` (change around braces)
+
+
+## 2. Modes
+
+### i. Windows Mode
+
+After pressing `ctrl + w`:
+
+- `s` - Split the screen horizontally
+- `v` - Split the screen vertically
+- `o` - Close all other open splits except the current one
+
+### ii. Command Mode
+
+- `ctrl + d` - Show a popup menu with recommended commands
+- `ctrl + w` (in Insert Mode) - Delete the previous word
+- `ctrl + u` (in Insert Mode) - Delete the entire line before the cursor
+
+>
+
+- `ctrl + p` - Move backward in a list (like fuzzy finding)
+- `ctrl + n` - Move forward in a list (like fuzzy finding)
+- `ctrl + j` - Grep a word and navigate forward through search results
+- `ctrl + k` - Grep a word and navigate backward through search results
+
+>
+
+- `/word` - Search forward for "word"
+- `?word` - Search backward for "word"
+
+## 3. Vim Settings
+
+- `:set scrolloff=8` - Automatically scroll when you're within 8 lines from the top or bottom
+- `:set number` - show absolute line numbers
+- `:set relativenumber` or `:set rnu` - show relative line numbers from the current line
+
+## 4. Help
+- `ctrl + n` - Move to the next section in the help menu
+- `ctrl + b` - Move back in the help menu
+- `:help options` - Open the help documentation for the options menu
+
+
+## References
+
+``` js 
+// copy paste the code in vim and play around.
+const { data } = await client.get('statuses/user_timeline', {
+  email: user.email,
+  count: 100
+  tweet_mode: 'extended',
+});
+
+const tweets: Tweet[] = data.map((tweet: any) => ({
+  id: tweeet.id_ster,
+  text: tweet.full_text,
+  created_at: tweet.created_at,
+  user: {
+    id: tweet.user.id_str,
+    screen_name: tweet.user.screen_name,
+  },
+  email: user.email,
+}));
+
+```
+
+
+
+## Resources
+
+1. [Matt wiki vim](https://wiki.dzx.cz/computer_science/command_line/vim) 
+2. [Cheatsheets vim](https://cheatsheets.zip/vim)  
+
