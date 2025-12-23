@@ -22,8 +22,9 @@ title: Learning Notes on Multiple Topics
 
 ### 5. Languages 
 
-- [Javascript](/js) 
-- [ruby](/ror) 
+- [Javascript](/jscript) 
+
+- [ruby](/ruby) 
 
 ### 6. Guitar
 

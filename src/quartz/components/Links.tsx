@@ -30,6 +30,10 @@ export default ((userOpts?: Partial<Options>) => {
             <i>Learning notes about system design</i>
           </li>
           <li>
+            <h3 style={{marginTop: 0, marginBottom: 0}}><a href="/notes/books">Books</a></h3>
+            <i>Learning notes about books</i>
+          </li>
+          <li>
             <h3 style={{marginTop: 0, marginBottom: 0}}><a href="/notes/resources">Resources</a></h3>
             <i>Links to various things</i>
           </li>
