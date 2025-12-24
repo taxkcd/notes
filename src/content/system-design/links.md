@@ -3,10 +3,7 @@ title: System Design Links
 date: 2025-11-14
 ---
 
-
-
 ## Collections
-
 
 1. [Interviewing.io system design](https://interviewing.io/guides/system-design-interview#introduction-to-system-design)
 2. [System Design karanpratapsingh](https://www.karanpratapsingh.com/courses/system-design) 
@@ -35,6 +32,7 @@ date: 2025-11-14
 ### Hello interview
 
 1. [DB Indexing in System Design Interviews - B-tree, Geospatial, Inverted Index, and more!](https://www.youtube.com/watch?app=desktop&v=BHCSL_ZifI0) 
+2. [Caching in System Design Interviews w/ Meta Staff Engineer](https://www.youtube.com/watch?v=1NngTUYPdpI) 
 
 
 
@@ -50,5 +48,11 @@ date: 2025-11-14
 
 
 
+### Mock Interviews
 
+#### Sanket Singh
 
+1. [Facebook News Feed System Design | Mock Interview FAANG 2025](https://www.youtube.com/watch?v=DIiLDIYhYrg&list=LL&index=3)
+   - feedback on this in comments was great
+
+2. [Stock Trading App System Design Interview | Meta System Design](https://www.youtube.com/watch?v=a5rABvMQ53U)

@@ -20,6 +20,9 @@ date: 2025-11-13
 - [Keyhero custom typing](https://www.keyhero.com/custom-typing-test/)
 
 
+### Mock Interviews
+
+1. [Senior Software Engineer Mock Technical Interview (Coding/Algorithms in JavaScript)](https://www.youtube.com/watch?v=yju4zwKSriI) 
 
 ## Resources
 
