@@ -6,17 +6,19 @@ date: 2025-11-14
 ## Collections
 
 1. [Interviewing.io system design](https://interviewing.io/guides/system-design-interview#introduction-to-system-design)
-2. [System Design karanpratapsingh](https://www.karanpratapsingh.com/courses/system-design) 
-3. [System Design For Beginners: Everything You Need in One Article Shivam Bhadani](https://medium.com/@shivambhadani_/system-design-for-beginners-everything-you-need-in-one-article-c74eb702540b)
 4. [Design A Photo Sharing App Like Instagram - Hello Interview System Design in A Hurry - Premium](https://www.scribd.com/document/918857392/Design-a-Photo-Sharing-App-Like-Instagram-Hello-Interview-System-Design-in-a-Hurry#:~:text=The%20fanout%20on%20write%20is,and%20need%20to%20happen%20asynchronously)
 5. [Ace System Design](https://www.acesystemdesign.com/home) 
-6. [Umer Farooq](https://blog.umer-farooq.com/) 
+
+
+## Bloggers
+
+1. [Umer Farooq](https://blog.umer-farooq.com/) 
     - read and see what articles are useful. i don't think everything is useful here.
-
-
+2. [Love Sharma byte byte go](https://zonito.medium.com/) 
+3. [System Design For Beginners: Everything You Need in One Article Shivam Bhadani](https://medium.com/@shivambhadani_/system-design-for-beginners-everything-you-need-in-one-article-c74eb702540b)
+4. [System Design karanpratapsingh](https://www.karanpratapsingh.com/courses/system-design)
 
 ## Notes
-
 
 1. [Designing News Feed (Social Media apps) - greensky](https://docs.google.com/document/d/1T2sBdHxg3z5D-QIBAJuXxI-dmlIzOEzBSoDVlma9jug/edit?usp=sharing) 
 2. [Sanmandan system design notes](https://docs.google.com/document/d/1BkBf4san1rIOTxnxSCXNBh9jcSXKD5dginxKjgcBvjY/edit?usp=sharing)
