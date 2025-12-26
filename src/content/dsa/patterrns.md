@@ -147,6 +147,69 @@ main()
 - just dry run it. no other good way. 
 ```
 
+
+
+
+## Sliding Window
+
+#### 1. [Maximum Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/)
+
+> [!info]- Links
+> <div>
+> <ul>
+>  <li>
+>     <a href="https://claude.ai/share/8b0f4cad-93f5-4b44-8824-9f09fd73f253" >claude</a>
+>  </li>
+> </ul>
+> </div>
+
+``` bash
+- Sliding window of size k with frequency map ( distinct elements) 
+- update the maximum sum only when the window has exactly k unique elements.
+```
+
+#### 2. [Count Subarrays With Score Less Than K](https://leetcode.com/problems/count-subarrays-with-score-less-than-k/description/)
+
+> [!info]- Links
+> <div>
+> <ul>
+>  <li>
+>     <a href="https://excalidraw.com/#json=74R_-7lUozRJmVjTaenDH,RwGb6BHoekOgQFsK9rGZbQ" >excalidraw</a>
+>  </li>
+> </ul>
+> </div>
+
+``` bash
+- see excalidraw dry run.
+- Use a sliding window / two-pointers approach: 
+- expand the right pointer, and shrink the left pointer until the window satisfies the condition, 
+- counting all valid subarrays ending at each right index.
+```
+
+#### 3. [Average Of Subarrays of size K (Educative)](https://github.com/taimourz/Grooking-Coding-Interviews/blob/main/1%20Sliding%20Window/1.1%20Average%20Of%20Subarrays%20of%20size%20K/code.js)
+
+``` bash
+- fixed-size sliding window to keep the sum of k elements.
+- Slide the window forward by adding the next value and removing the leftmost one to compute averages efficiently.
+```
+
+#### 4. [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
+
+``` bash
+- Use a dynamic sliding window that expands to reach the target sum and shrinks to minimize length.
+- Track the smallest valid window whenever the running sum is ≥ target.
+```
+
+#### 5. [Longest Substring with K Distinct Characters (Educative)](https://github.com/taimourz/Grooking-Coding-Interviews/blob/main/1%20Sliding%20Window/1.4%20Longest%20Substring%20with%20K%20Distinct%20Characters/code.js)
+
+``` bash
+- Use a sliding window with a frequency map to track distinct characters.
+- Shrink the window when distinct count exceeds k, and update the maximum length when it equals k
+```
+
+
+
+
 ## Trees
 
 #### 1. [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)

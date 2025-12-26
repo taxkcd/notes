@@ -92,4 +92,37 @@ author: Taimour
 ![[finalcountdown4.png]]
 ![[finalcountdown5.png]]
 
+#### 8. [Wo hamsafer tha](https://www.youtube.com/watch?v=FVwfCyeZwpQ&t=40s)
+
+
+![[hs1.png]]
+![[hs2.png]]
+![[hs3.png]]
+![[hs4.png]]
+![[hs5.png]]
+![[hs6.png]]
+![[hs7.png]]
+![[hs8.png]]
+![[hs9.png]]
+![[hs10.png]]
+![[hs12.png]]
+![[hs13.png]]
+![[hs14.png]]
+![[hs15.png]]
+![[hs16.png]]
+![[hs17.png]]
+![[hs18.png]]
+![[hs19.png]]
+![[hs20.png]]
+![[hs21.png]]
+![[hs22.png]]
+![[hs23.png]]
+![[hs24.png]]
+![[hs25.png]]
+![[hs26.png]]
+![[hs27.png]]
+![[hs28.png]]
+![[hs29.png]]
+
+
 

@@ -35,6 +35,7 @@ date: 2025-11-14
 
 1. [DB Indexing in System Design Interviews - B-tree, Geospatial, Inverted Index, and more!](https://www.youtube.com/watch?app=desktop&v=BHCSL_ZifI0) 
 2. [Caching in System Design Interviews w/ Meta Staff Engineer](https://www.youtube.com/watch?v=1NngTUYPdpI) 
+3. [CAP Theorem in System Design Interviews](https://www.youtube.com/watch?v=VdrEq0cODu4) 
 
 
 
@@ -58,3 +59,5 @@ date: 2025-11-14
    - feedback on this in comments was great
 
 2. [Stock Trading App System Design Interview | Meta System Design](https://www.youtube.com/watch?v=a5rABvMQ53U)
+
+3. [Design Spotify Like a Senior Engineer (System Design Interview)](https://www.youtube.com/watch?v=H7s1pvuhmTA)
