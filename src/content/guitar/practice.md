@@ -126,3 +126,11 @@ author: Taimour
 
 
 
+#### 8. [Teri Meri](https://www.youtube.com/watch?v=Ou2tasXSNTA)
+
+
+![[terimeri1.png]]
+![[terimeri2.png]]
+![[terimeri3.png]]
+![[terimeri4.png]]
+![[terimeri5.png]]
