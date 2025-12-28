@@ -207,7 +207,85 @@ main()
 - Shrink the window when distinct count exceeds k, and update the maximum length when it equals k
 ```
 
+#### 6. [Fruit Into Baskets](https://leetcode.com/problems/fruit-into-baskets/description/)
 
+``` bash
+- same as Longest Substring with K Distinct Characters (Educative)
+- We use a sliding window with a map to track counts of fruit types in the current window.
+- If the window ever has more than 2 distinct fruits, we shrink it from the left, and continuously update the maximum window size seen.
+```
+
+#### 7. [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+
+``` bash
+- same as Longest Substring with K Distinct Characters (Educative)
+- Use a sliding window with a map to keep character frequencies and ensure all characters in the window are unique.
+- When a duplicate appears, shrink the window from the left until uniqueness is restored, tracking the maximum length.
+```
+
+#### 8. [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/description/)
+
+> [!info]- Links
+> <div>
+> <ul>
+>  <li>
+>     <a href="https://claude.ai/share/a05fcefe-b73e-4c36-8420-b2d3cd9bce59" >claude</a>
+>  </li>
+>  <li>
+>     <a href="https://excalidraw.com/#json=ulwJwzpRaAZaQYEcKelsf,tqzfRmu2u2THTOZyag2hvg" >excalidraw</a>
+>  </li>
+> </ul>
+> </div>
+
+``` bash
+- Use a sliding window and keep track of the most frequent character in the window.
+- If the window size minus that frequency exceeds k (replacements needed), shrink the window; otherwise, update the maximum length.
+
+Step 1: [A] → window size 1
+         ^
+         L,R
+
+Step 2: [A A] → window size 2
+         ^   ^
+         L   R
+
+Step 3: [A A B] → window size 3
+         ^   ^
+         L   R
+
+Step 4: [A A B A] → window size 4 ✓ (max so far)
+         ^     ^
+         L     R
+
+Step 5: [A A B A B] → invalid (needs 2 replacements)
+         ^       ^
+         L       R
+        
+        Shrink: [A B A B] → window size 4
+                 ^       ^
+                 L       R
+
+Step 6: [A B A B B] → invalid
+         ^       ^
+         L       R
+        
+        Shrink: [B A B B] → window size 4
+                 ^     ^
+                 L     R
+
+Step 7: [B A B B A] → invalid
+         ^       ^
+         L       R
+        
+        Shrink: [A B B A] → window size 4
+                 ^     ^
+                 L     R
+
+Answer: 4 (longest valid window)
+
+
+
+```
 
 
 ## Trees
