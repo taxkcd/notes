@@ -283,8 +283,31 @@ Step 7: [B A B B A] → invalid
 
 Answer: 4 (longest valid window)
 
+```
+
+#### 9. [Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/description/)
+
+``` bash
+- Use a sliding window to keep at most k zeros in the window by expanding right and shrinking from the left when zeros exceed k.
+- Track and update the maximum window length, which represents the longest subarray that can be made all 1s by flipping at most k zeros.
+- this hint helped me from discussion: main observation is --> atmost k zeros are allowed in window
+```
 
 
+#### 10. [Permutation in String](https://leetcode.com/problems/permutation-in-string/)
+
+``` bash
+- We use a fixed-size sliding window over s2 and maintain incremental character counts.
+- If the window’s character counts match s1’s counts, it contains a permutation.
+```
+
+#### 11. [Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/description/)
+
+
+``` bash
+- same as permutation in a string
+- Use a fixed-size sliding window of length p.length over s, maintaining character frequency maps for the window and the pattern.
+- When the window size matches, compare frequencies; if they match, the window start index is an anagram.
 ```
 
 

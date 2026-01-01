@@ -36,6 +36,8 @@ date: 2025-11-14
 1. [DB Indexing in System Design Interviews - B-tree, Geospatial, Inverted Index, and more!](https://www.youtube.com/watch?app=desktop&v=BHCSL_ZifI0) 
 2. [Caching in System Design Interviews w/ Meta Staff Engineer](https://www.youtube.com/watch?v=1NngTUYPdpI) 
 3. [CAP Theorem in System Design Interviews](https://www.youtube.com/watch?v=VdrEq0cODu4) 
+4. [Design Uber w/ a Ex-Meta Staff Engineer: System Design Interview breakdown](https://www.youtube.com/watch?v=lsKU38RKQSo) 
+5. [System Design Interview: Design Ticketmaster w/ a Ex-Meta Staff Engineer](https://www.youtube.com/watch?v=fhdPyoO6aXI) 
 
 
 

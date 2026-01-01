@@ -58,7 +58,7 @@ author: Taimour
 ![[spiritedaway4.png]]
 ![[spiritedaway5.png]]
 
-#### 4. Gulumcan
+#### 4. [Gulumcan](https://www.youtube.com/watch?v=kk0VVtqxE20)
 
 ![[gulumcan1.png]]
 ![[gulumcan2.png]]
@@ -134,3 +134,8 @@ author: Taimour
 ![[terimeri3.png]]
 ![[terimeri4.png]]
 ![[terimeri5.png]]
+
+
+#### 9. [Hatim](https://www.youtube.com/watch?v=y0e2f5sdEuM)
+
+![[hatim.png]]
