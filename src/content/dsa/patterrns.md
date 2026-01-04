@@ -310,6 +310,14 @@ Answer: 4 (longest valid window)
 - When the window size matches, compare frequencies; if they match, the window start index is an anagram.
 ```
 
+#### 12. [Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/description/)
+
+``` bash
+- Use a sliding window with a frequency map to track how many required characters from t are currently covered in s.
+- Expand right to include all required chars, then shrink from left to keep the window valid and minimal.
+- later: do with the groking technique. counter based. 
+```
+
 
 ## Trees
 
@@ -1011,6 +1019,7 @@ Step 4: ADVANCE
 > </div>
 
 ``` bash
+- same as 2sum
 - will use 2 pointer while holding current element.
 - most imp is how to skip duplicates. 2 ways. one in outer loop
 - other when we are moving left and right.
@@ -1077,6 +1086,39 @@ aka partition algorithm
 - move pointer with small height b/c we want to maximize the area.
 - imp thing to note x-axis starts from 0
 ```
+
+#### 4. [Pair with Target sum (Educative)]
+
+
+``` bash
+- The solution uses a two-pointer technique with one pointer at the start and one at the end of the array. 
+- It moves the pointers inward based on whether the current sum is greater than or less than the target, finding the pair in O(n) time (assumes sorted array).
+```
+#### 5. [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+
+``` bash
+- The solution uses a slow-fast pointer approach where the slow pointer (nextNonDuplicate) tracks the position for the next unique element.
+- The fast pointer (r) scans through the array, and whenever a new unique element is found, it's placed at the nextNonDuplicate position and the pointer advances.
+```
+
+#### 6. [Remove Element](https://leetcode.com/problems/remove-element/description/)
+
+``` bash
+- similar to Remove Duplicates from a sorted Array
+- The solution uses a slow-fast pointer approach where the slow pointer (nextElement) tracks where to place the next non-target element. 
+- The fast pointer (r) scans through the array, and whenever it finds an element that's not equal to val, 
+it copies it to the nextElement position and advances the slow pointer.
+```
+
+#### 7. [Square of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/)
+
+``` bash
+- Since the array is sorted, the largest squared values must come from either end (most negative or most positive numbers).
+- Use two pointers to compare both ends, repeatedly pick the larger square and place it at the back of the result array, working backwards.
+```
+
+
+
 
 ### Backtracking
 
