@@ -27,6 +27,7 @@ date: 2025-11-14
 - `vector<int> nums = {1,2,3};` → cursor on `{` → `di{` → `{}`    
 - `f}i`, value - Jump to `}`, will insert inside `}` at the end
 - `f"ci"`- Jump to next quote, change inside quotes, same for `'`, `<` eg `vector<int>`
+- `ea` - move to the end of the word in insert mode
 >
 Multi character operations
 - `ct,` - Change till comma (useful in argument lists)
@@ -100,6 +101,7 @@ Multi-Line Selections
 - `daB` = delete { } and everything inside
 - `dt;` = Delete till (not including) semicolon
 - `df;` = Delete till and including semicolon
+- `d^`  = Delete till the first non whitespace character
 
 ### ii. Copy Paste Replace
 - `ry` - Replace the character under the cursor with the next character `y`

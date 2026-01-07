@@ -319,6 +319,77 @@ Answer: 4 (longest valid window)
 ```
 
 
+#### 13. [Subarray Product Less Than K](https://leetcode.com/problems/subarray-product-less-than-k/description/)
+
+``` bash
+- We use a sliding window that maintains a product < k. 
+- At each position, we expand the window by including the current element, then shrink from the left while the product >= k.
+- Once valid, we know that all subarrays ending at the current position (starting from anywhere in the current window) have product < k,
+- so we add (windowEnd - windowStart + 1) to our count.
+
+Step 1: windowEnd=0
+Window: [10]
+         ↑
+    windowStart=0, windowEnd=0
+    
+Product = 10 < 100 ✓
+
+Subarrays ending at index 0:
+- [10] (from index 0 to 0)
+
+Count = (0 - 0 + 1) = 1
+
+Step 2: windowEnd=1
+Window: [10, 5]
+         ↑   ↑
+    windowStart=0, windowEnd=1
+    
+Product = 10 * 5 = 50 < 100 ✓
+
+Subarrays ending at index 1:
+- [5] (from index 1 to 1) → product = 5 ✓
+- [10, 5] (from index 0 to 1) → product = 50 ✓
+
+Count = (1 - 0 + 1) = 2
+
+
+Step 3: windowEnd=2
+Window: [10, 5, 2]
+Product = 50 * 2 = 100 >= 100 ✗
+
+While loop shrinks window:
+  Remove 10: product = 100/10 = 10, windowStart=1
+  
+Window: [5, 2]
+         ↑  ↑
+    windowStart=1, windowEnd=2
+    
+Product = 10 < 100 ✓
+
+Subarrays ending at index 2:
+- [2] (from index 2 to 2) → product = 2 ✓
+- [5, 2] (from index 1 to 2) → product = 10 ✓
+
+Count = (2 - 1 + 1) = 2
+
+Step 4: windowEnd=3
+Window: [5, 2, 6]
+         ↑     ↑
+    windowStart=1, windowEnd=3
+    
+Product = 10 * 6 = 60 < 100 ✓
+
+Subarrays ending at index 3:
+- [6] (from index 3 to 3) → product = 6 ✓
+- [2, 6] (from index 2 to 3) → product = 12 ✓
+- [5, 2, 6] (from index 1 to 3) → product = 60 ✓
+
+Count = (3 - 1 + 1) = 3
+
+```
+
+
+
 ## Trees
 
 #### 1. [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
@@ -1116,6 +1187,21 @@ it copies it to the nextElement position and advances the slow pointer.
 - Since the array is sorted, the largest squared values must come from either end (most negative or most positive numbers).
 - Use two pointers to compare both ends, repeatedly pick the larger square and place it at the back of the result array, working backwards.
 ```
+
+#### 8. [3Sum Closest](https://leetcode.com/problems/3sum-closest/description/)
+
+``` bash
+- The solution sorts the array, then for each element, uses two pointers from both ends to find the three numbers whose sum is closest to the target.
+- It tracks the minimum difference encountered and returns the sum with the smallest absolute difference from the target.
+```
+#### 9. [Tiplets with smaller sum (G)]()
+
+``` bash
+- The solution sorts the array and for each element, uses two pointers to count pairs where the triplet sum is less than the target. 
+- When a valid pair is found at positions l and r, it counts all pairs between them (r - l)
+- since the sorted array guarantees all elements between l and r will also form valid triplets.
+```
+
 
 
 
