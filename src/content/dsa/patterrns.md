@@ -1202,6 +1202,14 @@ it copies it to the nextElement position and advances the slow pointer.
 - since the sorted array guarantees all elements between l and r will also form valid triplets.
 ```
 
+#### 10. [Sort Colors](https://leetcode.com/problems/sort-colors/description/)
+
+``` bash
+- We use three pointers: l marks where the next 0 should go, r marks where the next 2 should go, and i scans through the array.
+- When we find a 0, we swap it to the left and move on; when we find a 2, we swap it to the right but don't move i (since we need to check what we just swapped in)
+- when we find a 1, we just move forward. We stop when i passes r because everything after r is already sorted 2s.
+```
+
 
 
 
