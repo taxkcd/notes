@@ -1086,6 +1086,9 @@ Step 4: ADVANCE
 >  <li>
 >     <a href="https://chatgpt.com/share/691f0c0f-3fa8-8005-8e86-cfe12c416b23" >chatgpt</a>
 >  </li>
+>  <li>
+>     <a href="https://excalidraw.com/#json=MqepFOfnetCltdMkn6wq5,u9HzU-h43qOnjrfVtI3Pyg" >excalidraw visualisation</a>
+>  </li>
 > </ul>
 > </div>
 
@@ -1094,51 +1097,6 @@ Step 4: ADVANCE
 - will use 2 pointer while holding current element.
 - most imp is how to skip duplicates. 2 ways. one in outer loop
 - other when we are moving left and right.
-```
-
-##### visualizations
-
-``` bash
-Array after sorting: [-4, -1, -1, 0, 1, 2]
-                      ↑   ↑              ↑
-                      i   left          right
-
-Search Space Visualization:
-
-Level 1 (i=0, nums[i]=-4, target=4):
-        -4  [-1, -1, 0, 1, 2]
-             ↑              ↑
-           left          right
-        
-        Searching for pairs that sum to 4:
-        -1 + 2 = 1 (too small) → move left
-        -1 + 2 = 1 (too small) → move left
-         0 + 2 = 2 (too small) → move left
-         1 + 2 = 3 (too small) → move left
-        [No valid triplets found]
-
-Level 2 (i=1, nums[i]=-1, target=1):
-        -1  [-1, 0, 1, 2]
-             ↑         ↑
-           left     right
-        
-        Searching for pairs that sum to 1:
-        -1 + 2 = 1 ✓ → Found [-1, -1, 2]
-        (skip duplicate -1)
-         0 + 1 = 1 ✓ → Found [-1, 0, 1]
-        
-Level 3 (i=2, nums[i]=-1):
-        -1  (skipped - duplicate)
-
-Level 4 (i=3, nums[i]=0, target=0):
-         0  [1, 2]
-             ↑  ↑
-           left right
-        
-        Searching for pairs that sum to 0:
-        1 + 2 = 3 (too large) → move right
-        [Loop exits]
-
 ```
 
 #### 2. [move zeros](https://leetcode.com/problems/move-zeroes/description/)
@@ -1208,6 +1166,29 @@ it copies it to the nextElement position and advances the slow pointer.
 - We use three pointers: l marks where the next 0 should go, r marks where the next 2 should go, and i scans through the array.
 - When we find a 0, we swap it to the left and move on; when we find a 2, we swap it to the right but don't move i (since we need to check what we just swapped in)
 - when we find a 1, we just move forward. We stop when i passes r because everything after r is already sorted 2s.
+```
+
+#### 11. [4Sum](https://leetcode.com/problems/4sum/)
+
+``` bash
+- same as 3sum
+```
+
+#### 12. [Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)
+
+``` bash
+- Process both strings backwards simultaneously.
+- When you hit a hashtag(#), count it; when you hit a regular character, either skip it (if you have backspaces to apply) or compare it (if no backspaces left).
+```
+
+#### 13. [Shortest Unsorted Continuous Subarray](https://leetcode.com/problems/shortest-unsorted-continuous-subarray/description/)
+
+``` bash
+- Find the initial unsorted window by scanning from both ends until elements stop being in ascending order, 
+- one pass each side
+- find the min/max within that window.
+- Expand the window boundaries by checking if any sorted elements outside the window are greater than the min or less than the max (meaning they'd be out of place after sorting).
+- handle duplicates
 ```
 
 
