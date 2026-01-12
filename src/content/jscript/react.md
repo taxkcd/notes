@@ -615,6 +615,39 @@ function App() {
 ```
 
 ### Custom Hooks
+
+
+Custom hooks in React are reusable functions that let you extract component logic into standalone, shareable pieces. They're a way to organize and reuse stateful logic across multiple components without changing your component hierarchy.
+The basics
+Custom hooks are just JavaScript functions whose names start with "use" and that can call other hooks. Here's a simple example:
+``` js
+javascriptfunction useWindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
+  
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  return width;
+}
+```
+Now any component can use this hook to get the current window width:
+
+``` js
+javascriptfunction MyComponent() {
+  const width = useWindowWidth();
+  return <div>Window width: {width}px</div>;
+}
+```
+Why they're useful
+Custom hooks let you avoid duplicating the same logic across components. Instead of copying and pasting the same useState and useEffect calls everywhere, you write the logic once in a custom hook and reuse it. They also make your components cleaner and easier to read since complex logic is moved into a separate, well-named function.
+Key rules
+Custom hooks follow the same rules as regular hooks: they can only be called at the top level of a component or another custom hook (not inside loops, conditions, or nested functions), and they must start with "use" so React can identify them as hooks.
+
+#### Older example
+
 ```jsx
 function useLocalStorage(key, initialValue) {
   const [value, setValue] = useState(() => {

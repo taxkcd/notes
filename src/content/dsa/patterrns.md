@@ -1192,9 +1192,31 @@ it copies it to the nextElement position and advances the slow pointer.
 ```
 
 
+### Slow Fast Pointer approach
 
+#### 1. [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
 
+``` bash
+- we use 2 pointers. if there's a cycle, the faster pointer will eventually lap and meet the slower one.
+- If the fast pointer reaches the end (undefined), there's no cycle.
+```
 
+#### 2. [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/description/)
+
+``` bash
+- First detects if a cycle exists using fast/slow pointers,
+- then calculates the cycle length by counting nodes until the slow pointer loops back to itself.
+- Finally, uses two pointers separated by the cycle length to find the cycle's starting node—when they meet, that's where the cycle begins.
+```
+
+#### 3. [Happy Number](https://leetcode.com/problems/happy-number/description/)
+
+``` bash
+- if a number is happy, the cycle will end at 1,
+- otherwise it enters an endless cycle at some other number. 
+- Returns true only if the cycle meeting point is 1.
+
+```
 ### Backtracking
 
 
