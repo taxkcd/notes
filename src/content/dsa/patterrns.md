@@ -1217,6 +1217,51 @@ it copies it to the nextElement position and advances the slow pointer.
 - Returns true only if the cycle meeting point is 1.
 
 ```
+#### 4. [Middle of Linked List](https://leetcode.com/problems/middle-of-the-linked-list/description/)
+
+``` bash
+- easy
+```
+#### 5. [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/description/)
+
+``` bash
+- Find the middle using slow/fast pointers, reverse the second half in-place
+- Compare the first half with the reversed second half by walking both lists simultaneously
+```
+
+
+#### 6. [Reorder List](https://leetcode.com/problems/reorder-list/description/)
+
+``` bash
+- Find the middle of the list using slow/fast pointers, 
+- Reverse the second half of the list starting from the middle,
+- Merge the first half and reversed second half by alternating nodes (left, right, left, right...).
+```
+> [!info]-  Complexity
+> ##### Time
+> Time: O(n) - We traverse the list three times: once to find middle, once to reverse, once to merge.
+> ##### Space
+> Space: O(1)
+
+
+#### 7. [Circular Array Loop](https://leetcode.com/problems/circular-array-loop/description/)
+
+``` bash
+- We check each index as a potential cycle start using Floyd's Cycle Detection (fast & slow pointers).
+- The slow pointer moves 1 step, fast moves 2 steps. 
+- If they meet at a valid position (same direction throughout, no self-loops), we found a cycle. 
+- We use -1 to mark invalid paths (direction changes or self-loops) and break early.
+- tbh, i did not understood this very well. just got the explanation and understood. Try again
+
+```
+> [!info]-  Complexity
+> ##### Time
+> Time: O(n²) - For each of n starting positions, we might traverse the entire array in the worst case.
+> ##### Space
+> Space: O(1) - Only using a few pointers (slow, fast, isForward), no extra data structures.
+
+
+
 ### Backtracking
 
 
