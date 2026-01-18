@@ -1261,6 +1261,43 @@ it copies it to the nextElement position and advances the slow pointer.
 > Space: O(1) - Only using a few pointers (slow, fast, isForward), no extra data structures.
 
 
+### Merge Intervals
+
+
+#### 1. [Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+
+```bash
+- Sort intervals by start position, then track a running interval with its current start and end boundaries.
+- For each interval, either extend the current end if overlapping, or save the current interval and start a new one.
+
+```
+#### 2. [Insert Intervals](https://leetcode.com/problems/insert-interval/)
+
+```bash
+- We process intervals in three phases: before overlap, during overlap, and after overlap.
+-  Before, Add all intervals that end before newInterval starts (no overlap possible)
+- Merge, Merge all intervals that overlap with newInterval by expanding newInterval's boundaries
+- After Add remaining intervals that start after newInterval ends
+
+```
+
+#### 3. [Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/description/)
+
+```bash
+- Find overlapping intervals: Use two pointers to traverse both lists simultaneously.
+- When intervals overlap, their intersection is [max(start1, start2), min(end1, end2)].
+- Advance the pointer: Move the pointer whose interval ends first, since it can't possibly intersect with future intervals in the other list.
+
+```
+
+#### 3. [Conflicting Appointments]
+
+```bash
+- same as merge intervals with a little bit of difference
+
+```
+
+
 
 ### Backtracking
 
