@@ -1290,7 +1290,7 @@ it copies it to the nextElement position and advances the slow pointer.
 
 ```
 
-#### 4. Conflicting Appointments
+#### 4. [Conflicting Appointments](https://github.com/taimourz/Grooking-Coding-Interviews/blob/main/4%20Merge%20Intervals/4.5%20Meeting%20Rooms%20II/code.js)
 
 ```bash
 - same as merge intervals with a little bit of difference
@@ -1311,6 +1311,13 @@ it copies it to the nextElement position and advances the slow pointer.
 > Space: O(n) 
 
 
+#### 6. [Maximum CPU Load](https://github.com/taimourz/Grooking-Coding-Interviews/blob/main/4%20Merge%20Intervals/4.6%20Maximum%20CPU%20Load%20(Edu)/code.js)
+
+```bash
+- Sort jobs by start time, then use a min-heap (sorted by end time) to track currently running jobs.
+- For each job, remove finished jobs from heap (subtract their load)
+- add the new job (add its load), and track the maximum total load seen.
+```
 
 ### Backtracking
 
