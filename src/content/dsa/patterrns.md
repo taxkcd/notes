@@ -1290,12 +1290,25 @@ it copies it to the nextElement position and advances the slow pointer.
 
 ```
 
-#### 3. [Conflicting Appointments]
+#### 4. Conflicting Appointments
 
 ```bash
 - same as merge intervals with a little bit of difference
 
 ```
+
+#### 5. [Meeting Rooms II](https://neetcode.io/problems/meeting-schedule-ii/question)
+
+```bash
+- Sort meetings by start time, then use a min-heap to track when ongoing meetings end.
+- For each meeting, remove ended meetings from the heap (freeing rooms), 
+- add the current meeting, and track the maximum heap size as the answer.
+```
+> [!info]-  Complexity
+> ##### Time
+> Time: O(n log n) Sorting: O(n log n) Heap operations: O(n log n) (n pushes + up to n pops, each O(log n))
+> ##### Space
+> Space: O(n) 
 
 
 
