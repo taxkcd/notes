@@ -1317,7 +1317,64 @@ it copies it to the nextElement position and advances the slow pointer.
 - Sort jobs by start time, then use a min-heap (sorted by end time) to track currently running jobs.
 - For each job, remove finished jobs from heap (subtract their load)
 - add the new job (add its load), and track the maximum total load seen.
+
 ```
+
+#### 6. [Employee Free Time](https://www.hellointerview.com/learn/code/intervals/employee-free-time#solution)
+
+- todo: look k merge approach 
+
+```bash
+-  Flatten all employee schedules into one array and sort by start time
+-  Merge overlapping intervals, then extract gaps between consecutive merged intervals as free time
+
+# approach 2
+
+- Push all intervals into a min-heap sorted by start time
+- Pop intervals one by one, merging overlaps and recording gaps as free time
+
+```
+> [!info]-  Complexity
+> ##### Time
+> approach 1 Time: Time Complexity: O(N log N) - dominated by sorting
+>
+> approach 2 Time: Time Complexity:  O(N log N) - N pushes and N pops, each O(log N)
+> ##### Space
+> approach 1 Space: Space Complexity: O(N) - for flattened array and merged intervals 
+>
+> approach 2 Space: Space Complexity: O(N) - heap stores all N intervals at once
+
+
+### Cyclic Sort
+
+
+
+#### 1. Sort Array
+
+```bash
+- normal sorting
+- note that we have zero based array indexing
+
+```
+
+#### 2. [Missing Number](https://leetcode.com/problems/missing-number/description/)
+
+```bash
+- Place each number x at index x (number equals index); 
+- the missing number's position will have a wrong value.
+- Scan each index i - the first position where nums[i] ≠ i is the missing number.
+- note we have 1 based array indexing
+```
+
+#### 3. [Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/description/)
+
+```bash
+- Place each number at its correct index (number x goes to index x-1);
+- duplicates naturally stay in positions of missing numbers.
+- Scan each index i, if nums[i] ≠ i+1, then i+1 is a missing number.
+
+```
+
 
 ### Backtracking
 

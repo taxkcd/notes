@@ -139,3 +139,15 @@ author: Taimour
 #### 9. [Hatim](https://www.youtube.com/watch?v=y0e2f5sdEuM)
 
 ![[hatim.png]]
+
+
+#### 9. [Jhol](https://www.youtube.com/watch?v=24LBXDE7A3k)
+
+![[jhol1.png]]
+![[jhol2.png]]
+![[jhol3.png]]
+![[jhol4.png]]
+![[jhol5.png]]
+![[jhol6.png]]
+![[jhol7.png]]
+![[jhol8.png]]
