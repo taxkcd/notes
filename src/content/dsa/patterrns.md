@@ -388,6 +388,12 @@ Count = (3 - 1 + 1) = 3
 
 ```
 
+#### 14. [Substrings of Size Three with Distinct Characters](https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/description/)
+
+```bash
+- Solved this on my own. easy
+```
+
 
 
 ## Trees
@@ -1375,6 +1381,21 @@ it copies it to the nextElement position and advances the slow pointer.
 
 ```
 
+#### 4. [Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/description/)
+
+```bash
+- we place each number at its correct index (value n goes to index n-1)
+- when we try to swap but find the target position already has the correct value, we've found the duplicate.
+```
+
+#### 5. [First Missing Positive](https://leetcode.com/problems/first-missing-positive/description/)
+
+```bash
+ - Follow Find the Missing Number to place the numbers on their correct indices. 
+ - we ignore all numbers that are out of the range of the array 
+ - (i.e., all negative numbers and all numbers greater than or equal to the length of the array)
+ - we iterate after this and the first index that does not have the correct number will be the smallest missing positive number!
+```
 
 ### Backtracking
 

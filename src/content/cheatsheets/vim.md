@@ -292,6 +292,16 @@ After pressing `ctrl + w`:
 - `:help options` - Open the help documentation for the options menu
 
 
+## 4. Tabs
+- `t` - open the file in a tab
+- `3gt` - go to tab 3
+- `gt` - go to next tab
+- `gT` - go to prev tab
+- `:tabclose` - close current tab
+- `:tabclose 1` - close tab 1
+
+
+
 ## References
 
 ``` js 
